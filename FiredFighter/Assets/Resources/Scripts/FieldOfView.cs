@@ -7,11 +7,11 @@ public class FieldOfView : MonoBehaviour
 
     [SerializeField] private LayerMask layerMask;
 
-    public float fov = 60;
-    public float viewDistance = 1f;
+    public float fov = 45;
+    public float viewDistance = 1.2f;
     private Mesh mesh;
     Vector3 origin = Vector3.zero;
-    private float startingAngle;
+    private float startingAngle = 0f;
     Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -25,11 +25,11 @@ public class FieldOfView : MonoBehaviour
    
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         //Vector3 origin = Vector3.zero;
         int rayCount = 90;
-        float angle = 0f;
+        float angle = startingAngle;// 0f;
         float angleIncrease = fov / rayCount;
 
         Vector3[] vertices = new Vector3[rayCount + 1 + 1];
@@ -72,10 +72,6 @@ public class FieldOfView : MonoBehaviour
         mesh.triangles = triangles;
     }
 
-    public void FixedUpdate()
-    {
-        //SetOrigin(transform.position);
-    }
 
     public void SetOrigin(Vector3 origin)
     {
@@ -87,7 +83,7 @@ public class FieldOfView : MonoBehaviour
 
     public void SetAimDirection(Vector3 aimDirection)
     {
-        startingAngle = GetAngleFromVectorFloat(aimDirection) - fov / 2f;
+        startingAngle = GetAngleFromVectorFloat(aimDirection) + fov / 2f;
     }
 
     private static Vector3 GetVectorFromAngle(float angle)

@@ -6,7 +6,7 @@ public class Player : LivingEntity
 {
     //public ParticleSystem dustParticle;
 
-    public FieldOfView fov;
+    [SerializeField] private FieldOfView fov;
 
     protected override void Start()
     {
@@ -22,6 +22,8 @@ public class Player : LivingEntity
     {
         //GetDirectionalInput();
         base.Update();
+        fov.SetOrigin(transform.position);
+        fov.SetAimDirection(direction);
         //if (Input.GetKeyDown(KeyCode.R) && (weaponHolder.primary == null || !weaponHolder.primary.attacking)) weaponHolder.SwitchWeapon();
         //if (Input.GetKeyDown(KeyCode.F) && weaponHolder.primary != null && !weaponHolder.primary.attacking) weaponHolder.DropWeapon(true);
 
@@ -30,14 +32,16 @@ public class Player : LivingEntity
     public override void FixedUpdate()
     {
         base.FixedUpdate();
-        fov.SetOrigin(rb.position);//transform.position);
-        fov.SetAimDirection(direction);
+        //fov.SetOrigin(rb.position);//transform.position);
+        //fov.SetAimDirection(direction);
+        //Debug.Log(direction);
     }
 
     public override void GetDirectionalInput()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = this.transform.position.z;
+        direction = (mousePos - this.transform.position).normalized;
     }
 
     public override void Move()
@@ -58,7 +62,7 @@ public class Player : LivingEntity
         {
             //dustParticle.Stop();
         }
-        anim.SetFloat("speed", Mathf.Abs(horizontal) + Mathf.Abs(vertical));
+        //anim.SetFloat("speed", Mathf.Abs(horizontal) + Mathf.Abs(vertical));
     }
 
     public override bool IsAttacking()
