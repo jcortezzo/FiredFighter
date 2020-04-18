@@ -122,21 +122,6 @@ public abstract class Enemy : LivingEntity
         Destroy(this.gameObject);
     }
 
-    private void DropItem()
-    {
-        //Debug.Log("Spawn weapon");
-        GameObject go = Instantiate(Resources.Load(WEAPON_GIVER_LOC), this.transform.position, Quaternion.identity) as GameObject;
-
-    }
-    
-    //private void DropStat()
-    //{
-    //    Effect e = effectRangeSearch.GetEffectRandom();
-    //    if (e == null) return;
-    //    GameObject go = Instantiate(Resources.Load(STAT_GIVER_LOC), this.transform.position, Quaternion.identity) as GameObject;
-    //    go.GetComponent<StatGiver>().effectID = EffectIndexer.Instance.GetIndex(e.ToString());
-    //}
-
     public override void Move()
     {
         //if (hitstun > 0) return;
@@ -205,6 +190,5 @@ public abstract class Enemy : LivingEntity
     {
         
     }
-
     */
 }
