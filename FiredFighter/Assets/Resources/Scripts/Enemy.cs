@@ -1,4 +1,4 @@
-﻿//using Pathfinding;
+﻿using Pathfinding;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public abstract class Enemy : LivingEntity
-{/*
+{
     //private Rigidbody2D rb;
     //public float speed;
     //public float health;
@@ -206,5 +206,5 @@ public abstract class Enemy : LivingEntity
         
     }
 
-    */
+    
 }
