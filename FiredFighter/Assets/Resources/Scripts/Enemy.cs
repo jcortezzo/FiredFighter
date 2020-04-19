@@ -143,7 +143,7 @@ public abstract class Enemy : LivingEntity
         {
             detectPlayer = false;
             target = null;
-            //target = GetClosestFire();
+            target = GetClosestFire();
         }
 
         //if(target != null && target.tag == "Player")
@@ -311,6 +311,18 @@ public abstract class Enemy : LivingEntity
         {
             d.Interact(player);
         }
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("touching player");
+        }
     }
 
+    public override void OnCollisionStay2D(Collision2D collision)
+    {
+        base.OnCollisionStay2D(collision);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("touching player");
+        }
+    }
 }

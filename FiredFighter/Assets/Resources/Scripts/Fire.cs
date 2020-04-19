@@ -14,7 +14,6 @@ public class Fire : MonoBehaviour, IInteractable
     private const float SPREAD_DISTANCE = 1f;
     private const int MAX_LEVEL = 7;
 
-    public float health = 10;
     public float splitTime = 10f;
     private float splitTimer;// = splitTime;
 
@@ -30,6 +29,7 @@ public class Fire : MonoBehaviour, IInteractable
         //transform.localScale *= level;
         numFires++;
         splitTimer = splitTime;
+        GlobalValues.Instance.onFireObjects.Add(this.gameObject);
     }
 
     // Update is called once per frame
@@ -47,6 +47,8 @@ public class Fire : MonoBehaviour, IInteractable
             if (n > 0) damage++;
             splitTimer = splitTime;
         }
+
+        if (level <= 0) Destroy(this.gameObject);
     }
 
     protected int Split()
@@ -90,10 +92,10 @@ public class Fire : MonoBehaviour, IInteractable
         if(collision.gameObject.tag == "Wall")
         {
             Destroy(this.gameObject);
-        } else if(collision.gameObject.tag == "Item")
+        } else if(collision.gameObject.GetComponent<IFlammable>() != null)
         {
             IFlammable flammable = collision.gameObject.GetComponent<IFlammable>();
-            if (flammable != null) BurnWood(flammable);
+            BurnWood(flammable);
         }
     }
 
@@ -112,10 +114,14 @@ public class Fire : MonoBehaviour, IInteractable
         }
     }
 
+    public void Extinguish(int damage)
+    {
+        level -= damage;
+    }
     private void BurnWood(IFlammable flammable)
     {
-        health += 5;
-        Destroy(flammable.GetGameObject());
+        level += flammable.FlameIncreaseNumber();
+        flammable.Burn();
         StartCoroutine(Smoke(flammable));
     }
 

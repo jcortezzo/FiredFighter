@@ -115,7 +115,7 @@ public class FieldOfView : MonoBehaviour
                 {
                     //Debug.DrawRay(origin, dir);
                     //return true;
-                    Debug.Log(hit.collider.gameObject.name);
+                    //Debug.Log(hit.collider.gameObject.name);
                     return hit.collider.gameObject == go;
                 } else
                 {

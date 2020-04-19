@@ -6,7 +6,7 @@ public class Chair : Breakable, IInteractable, IFlammable
 {
     public void Burn()
     {
-        
+        Destroy(this.gameObject);
     }
 
     public int SmokeNumber()
@@ -14,10 +14,11 @@ public class Chair : Breakable, IInteractable, IFlammable
         return 6;
     }
 
-    public GameObject GetGameObject()
+    public int FlameIncreaseNumber()
     {
-        return this.gameObject;
+        return 2;
     }
+
 
     public void Interact(Player player)
     {

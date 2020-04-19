@@ -75,6 +75,7 @@ public abstract class LivingEntity : MonoBehaviour
             if(holder.tool != null)
             {
                 holder.tool.Action();
+                holder.tool.action = true;
             }
         }
     }
@@ -85,7 +86,6 @@ public abstract class LivingEntity : MonoBehaviour
         Breakable breakable = collision.gameObject.GetComponent<Breakable>();
         if (breakable != null)
         {
-            
             if (IsAttacking())
             {
                 Debug.Log("break u ding");

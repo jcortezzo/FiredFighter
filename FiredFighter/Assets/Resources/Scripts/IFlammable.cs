@@ -7,6 +7,5 @@ public interface IFlammable
     void Burn();
 
     int SmokeNumber();
-
-    GameObject GetGameObject();
+    int FlameIncreaseNumber();
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Wood : MonoBehaviour, IInteractable, IFlammable
 {
 
-
     public void Interact(Player player)
     {
         player.holder.Pickup(this.gameObject);
@@ -13,7 +12,7 @@ public class Wood : MonoBehaviour, IInteractable, IFlammable
 
     public void Burn()
     {
-        
+        Destroy(this.gameObject);
     }
 
     public int SmokeNumber()
@@ -21,8 +20,8 @@ public class Wood : MonoBehaviour, IInteractable, IFlammable
         return 3;
     }
 
-    public GameObject GetGameObject()
+    public int FlameIncreaseNumber()
     {
-        return this.gameObject;
+        return 1;
     }
 }

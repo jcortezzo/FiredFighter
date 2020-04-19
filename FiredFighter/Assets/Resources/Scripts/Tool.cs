@@ -5,8 +5,9 @@ using UnityEngine;
 public abstract class Tool : MonoBehaviour
 {
     public float actionCoolDown;
-    public float maxCoolDown;
-    
+    public float maxCoolDown = 2;
+    public bool action;
+
     // Start is called before the first frame update
     void Start()
     {
