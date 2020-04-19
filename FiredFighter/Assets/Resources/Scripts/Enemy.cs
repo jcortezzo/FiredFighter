@@ -37,7 +37,7 @@ public abstract class Enemy : LivingEntity
     public ISet<GameObject> targets;
 
     public float followTimeElapsed;
-    public float followTimeMax = 2f;
+    public float followTimeMax = 2.5f;
     public bool detectPlayer;
     //public ISet<LivingEntity> friendlyTargets;
 
@@ -54,6 +54,8 @@ public abstract class Enemy : LivingEntity
     // Start is called before the first frame update
     private float initalDamage;
     private bool projectileWeapon;
+    //private float detectTime = 1f;
+    //private float detectTimer = 0f;
 
     private float WeaponScale(float initalDamage, float x)
     {
@@ -122,43 +124,54 @@ public abstract class Enemy : LivingEntity
             EndLife();
             //levelManager.UpdateUI();
         }
-        //float angle = GetAngleFromVectorFloat(direction);
 
-        //fov.SetOrigin(new Vector3(Mathf.Cos(angle), Mathf.Sin(angle)));//transform.position);
-        //fov.SetAimDirection(direction);
-        //float offset = 0.75f;
-        //float x = transform.position.x + (offset * Mathf.Cos(angle));
-        //float y = transform.position.y + (offset * Mathf.Sin(angle));
-        //fov.SetOrigin(new Vector3(x, y, transform.position.z));
-        ////fov.SetOrigin(transform.position);
-        //fov.SetAimDirection(direction);
-
-        //target = player.gameObject;
-        if(target != null && target.tag == "Player")
+        if (!player.IsHidden() && fov.Spot(player.gameObject))
         {
-            if(detectPlayer)
-            {
-                followTimeElapsed = followTimeMax;
-
-            } else
-            {
-                followTimeElapsed -= Time.deltaTime;
-            }
-            if(followTimeElapsed <= 0)
-            {
-                target = GetClosestFire();
-            }
-        } else if (!player.IsHidden() && fov.Spot(player.gameObject))
-        {
-            Debug.Log("player detected!");
+            followTimeElapsed = followTimeMax;
             target = player.gameObject;
             detectPlayer = true;
-        }
-        else 
+            Debug.Log("detected!");
+        } else if (followTimeElapsed > 0)
+        {
+            float time = Time.deltaTime;
+            followTimeElapsed -= time;
+            if (player.IsHidden())
+            {
+                followTimeElapsed -= time;
+            }
+        } else
         {
             detectPlayer = false;
-            target = GetClosestFire();
+            target = null;
+            //target = GetClosestFire();
         }
+
+        //if(target != null && target.tag == "Player")
+        //{
+        //    if(detectPlayer)
+        //    {
+        //        followTimeElapsed = followTimeMax;
+
+        //    } else
+        //    {
+        //        followTimeElapsed -= Time.deltaTime;
+        //    }
+        //    if(followTimeElapsed <= 0)
+        //    {
+        //        target = GetClosestFire();
+        //    }
+        //}
+        //else if (!player.IsHidden() && fov.Spot(player.gameObject))
+        //{
+        //    Debug.Log("player detected!");
+        //    target = player.gameObject;
+        //    detectPlayer = true;
+        //}
+        //else 
+        //{
+        //    detectPlayer = false;
+        //    target = GetClosestFire();
+        //}
         base.Update();
     }
 

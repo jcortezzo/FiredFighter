@@ -6,6 +6,7 @@ public class FieldOfView : MonoBehaviour
 {
 
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private LayerMask targetLayerMask;
     
     public float fov = 45;
     public float viewDistance = 1.2f;
@@ -104,18 +105,16 @@ public class FieldOfView : MonoBehaviour
         {
             //Debug.Log("Within distance");
             Vector3 dir = (adjPos - origin).normalized;
-            //if (Vector3.Angle(direction, dir) < fov / 2f)
-            //GetAngleFromVectorFloat(direction)
-            //startingAngle - fov / 2f
             if (Mathf.Abs(Mathf.DeltaAngle(GetAngleFromVectorFloat(direction), GetAngleFromVectorFloat(dir))) < fov / 2)
             {
                 //Debug.Log("Within angle");
-                RaycastHit2D hit = Physics2D.Raycast(transform.TransformPoint(origin), dir, viewDistance);
+                RaycastHit2D hit = Physics2D.Raycast(transform.TransformPoint(origin), dir, viewDistance, targetLayerMask);
                 Debug.DrawRay(transform.TransformPoint(origin), dir);
                 if (hit.collider != null)
                 {
                     //Debug.DrawRay(origin, dir);
                     //return true;
+                    Debug.Log(hit.collider.gameObject.name);
                     return hit.collider.gameObject == go;
                 } else
                 {

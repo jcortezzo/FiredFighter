@@ -49,6 +49,9 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 256
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 768
   fov: 60
   viewDistance: 1
 --- !u!33 &2580189132872860758
