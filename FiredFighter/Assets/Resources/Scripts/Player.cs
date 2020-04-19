@@ -25,7 +25,8 @@ public class Player : LivingEntity
         //fov.SetOrigin(transform.position);
         //fov.SetAimDirection(direction);
         //if (Input.GetKeyDown(KeyCode.R) && (weaponHolder.primary == null || !weaponHolder.primary.attacking)) weaponHolder.SwitchWeapon();
-        //if (Input.GetKeyDown(KeyCode.F) && weaponHolder.primary != null && !weaponHolder.primary.attacking) weaponHolder.DropWeapon(true);
+        if (Input.GetKeyDown(KeyCode.F) && holder.item != null) holder.DropWeapon();
+
 
     }
 
@@ -68,9 +69,23 @@ public class Player : LivingEntity
 
     public override bool IsAttacking()
     {
-        return false;
-        //return (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) &&
+        //return false;
+        return (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space));
+        //&&
         //        weaponHolder.primary != null && !weaponHolder.primary.attacking;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Item")
+        {
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                Item item = collision.gameObject.GetComponent<Item>();
+                IInteractable interact = item.GetComponent<IInteractable>();
+                interact.Interact(this);
+            }
+        }    
     }
 
     private void OnDestroy()

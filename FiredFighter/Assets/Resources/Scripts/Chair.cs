@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Item : MonoBehaviour
+public class Chair : Item, IInteractable
 {
-
     // Start is called before the first frame update
     void Start()
     {
@@ -17,4 +16,11 @@ public abstract class Item : MonoBehaviour
         
     }
 
+    public void Interact(Player player)
+    {
+        player.holder.item = this;
+        transform.parent = player.holder.transform;
+        transform.localPosition = new Vector3(1f, 0, transform.position.z);
+
+    }
 }
