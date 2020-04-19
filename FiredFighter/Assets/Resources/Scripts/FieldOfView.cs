@@ -26,7 +26,7 @@ public class FieldOfView : MonoBehaviour
 
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
         //Vector3 origin = Vector3.zero;
         int rayCount = 90;
@@ -46,14 +46,18 @@ public class FieldOfView : MonoBehaviour
             Vector3 vertex;
             RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.TransformPoint(origin), GetVectorFromAngle(angle), viewDistance, layerMask);
             RaycastHit2D raycastTarget = Physics2D.Raycast(transform.TransformPoint(origin), GetVectorFromAngle(angle), viewDistance);
+            
             if(raycastTarget.collider != null)
             {
-                if(raycastTarget.collider.tag == "Player")
+                if(raycastTarget.collider.gameObject.tag == "Player")
                 {
                     targetCollider = raycastTarget.collider;
                     Debug.Log("Found player");
                 }
-            } 
+            } else
+            {
+                Debug.Log("doesn find sh1t");
+            }
 
             if (raycastHit2D.collider == null)
             {

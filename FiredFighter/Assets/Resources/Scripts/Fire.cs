@@ -62,6 +62,7 @@ public class Fire : MonoBehaviour
             if (firePositions.Contains(position)) continue;
             fires[i] = Instantiate(this, position, Quaternion.identity);
             fires[i].level = level;
+            GlobalValues.Instance.onFireObjects.Add(fires[i].gameObject);
         }
 
         // count the number of fires that were
@@ -76,7 +77,10 @@ public class Fire : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if(collision.gameObject.tag == "Wall")
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     protected enum Directions {
