@@ -5,11 +5,13 @@ using UnityEngine;
 public class Fire : MonoBehaviour
 {
     public int level = 1;
+
     public static float damage = 1;
     public static int numFires = 0;
     public static HashSet<Vector3> firePositions = new HashSet<Vector3>();
     
     private const float SPREAD_DISTANCE = 1f;
+    private const int MAX_LEVEL = 7;
 
     public float splitTime = 10f;
     private float splitTimer;// = splitTime;
@@ -19,6 +21,7 @@ public class Fire : MonoBehaviour
     {
         if (firePositions.Contains(transform.position)) Destroy(gameObject);
         firePositions.Add(transform.position);
+        //transform.localScale *= level;
         numFires++;
         splitTimer = splitTime;
     }
@@ -33,7 +36,8 @@ public class Fire : MonoBehaviour
         else
         {
             int n = Split();
-            level++;
+            level = Mathf.Max(level + 1, MAX_LEVEL);
+            //transform.localScale *= level;
             if (n > 0) damage++;
             splitTimer = splitTime;
         }
@@ -51,7 +55,7 @@ public class Fire : MonoBehaviour
 
         for (int i = 0; i < positions.Length; i++)
         {
-            positions[i] *= SPREAD_DISTANCE;
+            positions[i] *= SPREAD_DISTANCE;// * level;
         }
 
         // instantiates fires in all four directions
@@ -75,12 +79,17 @@ public class Fire : MonoBehaviour
         return count;
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Wall")
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        firePositions.Remove(transform.position);
     }
 
     protected enum Directions {
