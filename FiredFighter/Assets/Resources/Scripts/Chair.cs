@@ -18,9 +18,6 @@ public class Chair : Item, IInteractable
 
     public void Interact(Player player)
     {
-        player.holder.item = this;
-        transform.parent = player.holder.transform;
-        transform.localPosition = new Vector3(1f, 0, transform.position.z);
-
+        player.holder.Pickup(this.gameObject);
     }
 }

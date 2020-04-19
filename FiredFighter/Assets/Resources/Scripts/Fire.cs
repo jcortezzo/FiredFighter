@@ -86,6 +86,10 @@ public class Fire : MonoBehaviour, IInteractable
         if(collision.gameObject.tag == "Wall")
         {
             Destroy(this.gameObject);
+        } else if(collision.gameObject.tag == "Item")
+        {
+            Wood wood = collision.gameObject.GetComponent<Wood>();
+            if (wood != null) BurnWood(wood);
         }
     }
 
@@ -100,8 +104,20 @@ public class Fire : MonoBehaviour, IInteractable
         if ( wood != null)
         {
             Debug.Log("Bigger fire!!");
-            health += 5;
+            BurnWood(wood);
         }
+    }
+
+    private void BurnWood(Wood wood)
+    {
+        health += 5;
+        Destroy(wood.gameObject);
+        SmokeUp();
+    }
+
+    private void SmokeUp()
+    {
+
     }
 
     protected enum Directions {

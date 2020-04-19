@@ -25,7 +25,7 @@ public class Player : LivingEntity
         //fov.SetOrigin(transform.position);
         //fov.SetAimDirection(direction);
         //if (Input.GetKeyDown(KeyCode.R) && (weaponHolder.primary == null || !weaponHolder.primary.attacking)) weaponHolder.SwitchWeapon();
-        if (Input.GetKeyDown(KeyCode.F) && holder.item != null) holder.DropWeapon();
+        if (Input.GetKeyDown(KeyCode.F) && holder.item != null) holder.DropItem();
 
 
     }

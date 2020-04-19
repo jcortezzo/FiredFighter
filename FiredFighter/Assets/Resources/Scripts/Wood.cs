@@ -5,7 +5,6 @@ using UnityEngine;
 public class Wood : MonoBehaviour, IInteractable
 {
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +19,6 @@ public class Wood : MonoBehaviour, IInteractable
 
     public void Interact(Player player)
     {
-        throw new System.NotImplementedException();
+        player.holder.Pickup(this.gameObject);
     }
 }

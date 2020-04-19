@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Holder : MonoBehaviour
 {
-    public Item item;
+    public GameObject item;
     
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,15 @@ public class Holder : MonoBehaviour
         
     }
 
-    public void DropWeapon()
+    public void Pickup(GameObject go)
+    {
+        if (item != null) DropItem();
+        item = go;
+        go.transform.parent = this.transform;
+        go.transform.localPosition = new Vector3(1f, 0, transform.position.z);
+    }
+
+    public void DropItem()
     {
         if(item != null)
         {
