@@ -81,8 +81,7 @@ public class Player : LivingEntity
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
-                Item item = collision.gameObject.GetComponent<Item>();
-                IInteractable interact = item.GetComponent<IInteractable>();
+                IInteractable interact = collision.gameObject.GetComponent<IInteractable>();
                 interact.Interact(this);
             }
         }    

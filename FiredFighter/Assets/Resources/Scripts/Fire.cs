@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fire : MonoBehaviour
+public class Fire : MonoBehaviour, IInteractable
 {
     public int level = 1;
 
     public static float damage = 1;
     public static int numFires = 0;
+
     public static HashSet<Vector3> firePositions = new HashSet<Vector3>();
     
     private const float SPREAD_DISTANCE = 1f;
     private const int MAX_LEVEL = 7;
 
+    public float health = 10;
     public float splitTime = 10f;
     private float splitTimer;// = splitTime;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -90,6 +92,16 @@ public class Fire : MonoBehaviour
     private void OnDestroy()
     {
         firePositions.Remove(transform.position);
+    }
+
+    public void Interact(Player player)
+    {
+        Wood wood = player.holder.item.GetComponent<Wood>();
+        if ( wood != null)
+        {
+            Debug.Log("Bigger fire!!");
+            health += 5;
+        }
     }
 
     protected enum Directions {

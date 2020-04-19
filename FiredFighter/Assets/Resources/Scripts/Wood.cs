@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wood : MonoBehaviour
+public class Wood : MonoBehaviour, IInteractable
 {
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,10 @@ public class Wood : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Interact(Player player)
+    {
+        throw new System.NotImplementedException();
     }
 }
