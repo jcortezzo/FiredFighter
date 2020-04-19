@@ -53,6 +53,9 @@ public class FieldOfView : MonoBehaviour
                 {
                     targetCollider = raycastTarget.collider;
                     Debug.Log("Found player");
+                } else
+                {
+                    Debug.Log("Found " + raycastTarget.collider.gameObject.name);
                 }
             } else
             {
@@ -93,7 +96,8 @@ public class FieldOfView : MonoBehaviour
 
     public void SetOrigin(Vector3 origin)
     {
-        this.origin = transform.InverseTransformPoint(origin);
+        Vector3 vec = transform.InverseTransformPoint(origin);
+        this.origin = vec;// + (vec - transform.localPosition);
         //origin = transform.position;
         //rb.MovePosition(origin);
         //this.origin = rb.position;

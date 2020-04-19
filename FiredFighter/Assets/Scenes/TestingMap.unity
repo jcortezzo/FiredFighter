@@ -15351,6 +15351,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireFighterMan
       objectReference: {fileID: 0}
+    - target: {fileID: 4486451672664038649, guid: 3d3aa77deb1c6ac4ca152f734d115559,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.62
+      objectReference: {fileID: 0}
     - target: {fileID: 4486451672664038652, guid: 3d3aa77deb1c6ac4ca152f734d115559,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
