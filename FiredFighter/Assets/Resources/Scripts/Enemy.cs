@@ -306,7 +306,11 @@ public abstract class Enemy : LivingEntity
 
     public virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Door d = collision.gameObject.GetComponent<Door>();
+        if (d != null && !d.IsOpen())
+        {
+            d.Interact(player);
+        }
     }
 
 }
