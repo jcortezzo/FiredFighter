@@ -139,6 +139,7 @@ MonoBehaviour:
   speed: 5
   health: 10
   direction: {x: 0, y: 0, z: 0}
+  holder: {fileID: 0}
   flip: 0
   anim: {fileID: 0}
   hitstun: 0
@@ -149,6 +150,8 @@ MonoBehaviour:
   attackingDistance: 0
   attackSpeed: 0.2
   attackTimer: 0
+  followTimeElapsed: 0
+  followTimeMax: 2.5
   detectPlayer: 0
 --- !u!1001 &2129560913306261677
 PrefabInstance:

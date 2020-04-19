@@ -12,6 +12,8 @@ public class Player : LivingEntity
 
     private float hiddenTime = 0.3f;
     private float hiddenTimer = 0f;
+
+    private IInteractable interactable;
     
     protected override void Start()
     {
@@ -39,6 +41,12 @@ public class Player : LivingEntity
             Unhide();
         }
         if (Input.GetKeyDown(KeyCode.F) && holder.item != null) holder.DropItem();
+
+        if (Input.GetKeyDown(KeyCode.E) && interactable != null)
+        {
+            interactable.Interact(this);
+            //interactable = null;
+        }
 
 
     }
@@ -88,17 +96,53 @@ public class Player : LivingEntity
         //        weaponHolder.primary != null && !weaponHolder.primary.attacking;
     }
 
-    public override void OnCollisionStay2D(Collision2D collision)
+    //public override void OnCollisionStay2D(Collision2D collision)
+    //{
+    //    base.OnCollisionStay2D(collision);
+    //    if(collision.gameObject.tag == "Item")
+    //    {
+    //        if(Input.GetKeyDown(KeyCode.E))
+    //        {
+    //            IInteractable interact = collision.gameObject.GetComponent<IInteractable>();
+    //            interact.Interact(this);
+    //        }
+    //    }    
+    //}
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        base.OnCollisionStay2D(collision);
-        if(collision.gameObject.tag == "Item")
+        IInteractable i = collision.gameObject.GetComponent<IInteractable>();
+        if (i != null)
         {
-            if(Input.GetKeyDown(KeyCode.E))
-            {
-                IInteractable interact = collision.gameObject.GetComponent<IInteractable>();
-                interact.Interact(this);
-            }
-        }    
+            interactable = i;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        IInteractable i = collision.gameObject.GetComponent<IInteractable>();
+        if (i == interactable)
+        {
+            interactable = null;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        IInteractable i = collision.gameObject.GetComponent<IInteractable>();
+        if (i != null)
+        {
+            interactable = i;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        IInteractable i = collision.gameObject.GetComponent<IInteractable>();
+        if (i == interactable)
+        {
+            interactable = null;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
