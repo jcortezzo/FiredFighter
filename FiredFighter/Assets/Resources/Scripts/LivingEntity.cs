@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public abstract class LivingEntity : MonoBehaviour
     public float speed;
     public float health;
     public Vector3 direction;
+    public Holder holder;
 
     protected SpriteRenderer sr;
 
@@ -28,6 +30,7 @@ public abstract class LivingEntity : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        holder = GetComponentInChildren<Holder>();
     }
 
     // Update is called once per frame
@@ -42,6 +45,7 @@ public abstract class LivingEntity : MonoBehaviour
         }
 
         sr.material.color = Color.white;
+        RotateWeapon();
         RotateSelf();
         Attack();
     }
@@ -97,31 +101,32 @@ public abstract class LivingEntity : MonoBehaviour
 
     public abstract void GetDirectionalInput();
 
-    //public virtual void RotateWeapon()
-    //{
-    //    float weaponAngle = -Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-    //    weaponHolder.transform.rotation = Quaternion.AngleAxis(weaponAngle, -this.transform.forward);
-    //    //weaponHolder.rb.MoveRotation(weaponAngle); // j code
-    //    if (weaponAngle > 0)
-    //    {
+    public virtual void RotateWeapon()
+    {
+        float weaponAngle = -Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        holder.transform.rotation = Quaternion.AngleAxis(weaponAngle, -this.transform.forward);
+        //Debug.Log("rotate biatac");
+        //weaponHolder.rb.MoveRotation(weaponAngle); // j code
+        if (weaponAngle > 0)
+        {
 
-    //        weaponHolder.weaponSR.sortingOrder = sr.sortingOrder + 1;
-    //    }
-    //    else
-    //    {
+            //weaponHolder.weaponSR.sortingOrder = sr.sortingOrder + 1;
+        }
+        else
+        {
 
-    //        weaponHolder.weaponSR.sortingOrder = sr.sortingOrder - 1;
-    //    }//if (this is Enemy) Debug.Log(this.gameObject.name + " wp flip " + ((weaponAngle > 0 && weaponAngle < 90) || (weaponAngle > -90 && weaponAngle < 0)));
-    //    //Debug.Log(weaponAngle);
-    //    if ((weaponAngle > 0 && weaponAngle < 90) || (weaponAngle > -90 && weaponAngle < 0))
-    //    {
-    //        weaponHolder.weaponSR.flipY = false;
-    //        sr.flipX = false;
-    //    }
-    //    else
-    //    {
-    //        weaponHolder.weaponSR.flipY = true;
-    //        sr.flipX = true;
-    //    }
-    //}
+            //weaponHolder.weaponSR.sortingOrder = sr.sortingOrder - 1;
+        }//if (this is Enemy) Debug.Log(this.gameObject.name + " wp flip " + ((weaponAngle > 0 && weaponAngle < 90) || (weaponAngle > -90 && weaponAngle < 0)));
+        //Debug.Log(weaponAngle);
+        if ((weaponAngle > 0 && weaponAngle < 90) || (weaponAngle > -90 && weaponAngle < 0))
+        {
+            //weaponHolder.weaponSR.flipY = false;
+            sr.flipX = false;
+        }
+        else
+        {
+            //weaponHolder.weaponSR.flipY = true;
+            sr.flipX = true;
+        }
+    }
 }

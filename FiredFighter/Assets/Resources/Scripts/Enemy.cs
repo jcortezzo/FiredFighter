@@ -117,7 +117,7 @@ public abstract class Enemy : LivingEntity
         fov.SetAimDirection(direction);
         if (fov.Spot(player.gameObject))
         {
-            Debug.Log("player detected!");
+            //Debug.Log("player detected!");
         }
         base.Update();
     }

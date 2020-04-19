@@ -7,7 +7,7 @@ public class Player : LivingEntity
     //public ParticleSystem dustParticle;
 
     //[SerializeField] private FieldOfView fov;
-
+    
     protected override void Start()
     {
         base.Start();
@@ -20,7 +20,7 @@ public class Player : LivingEntity
 
     public override void Update()
     {
-        //GetDirectionalInput();
+        GetDirectionalInput();
         base.Update();
         //fov.SetOrigin(transform.position);
         //fov.SetAimDirection(direction);
@@ -42,6 +42,7 @@ public class Player : LivingEntity
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = this.transform.position.z;
         direction = (mousePos - this.transform.position).normalized;
+        Debug.Log(direction);
     }
 
     public override void Move()

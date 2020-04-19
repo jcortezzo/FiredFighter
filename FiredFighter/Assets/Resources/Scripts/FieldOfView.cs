@@ -96,7 +96,7 @@ public class FieldOfView : MonoBehaviour
 
     public bool Spot(GameObject go)
     {
-        if (Vector3.Distance(origin, transform.InverseTransformVector(go.transform.position)) < viewDistance)
+        if (Vector3.Distance(origin, go.transform.position) < viewDistance)
         {
             Vector3 dir = (go.transform.position - origin).normalized;
             //if (Vector3.Angle(direction, dir) < fov / 2f)
