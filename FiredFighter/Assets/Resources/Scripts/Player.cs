@@ -9,6 +9,9 @@ public class Player : LivingEntity
     [SerializeField] private FieldOfView fov;
 
     private bool hidden;
+
+    private float hiddenTime = 0.3f;
+    private float hiddenTimer = 0f;
     
     protected override void Start()
     {
@@ -28,6 +31,13 @@ public class Player : LivingEntity
         //fov.SetOrigin(transform.position);
         //fov.SetAimDirection(direction);
         //if (Input.GetKeyDown(KeyCode.R) && (weaponHolder.primary == null || !weaponHolder.primary.attacking)) weaponHolder.SwitchWeapon();
+        if (hiddenTimer > 0)
+        {
+            hiddenTimer -= Time.deltaTime;
+        } else
+        {
+            Unhide();
+        }
         if (Input.GetKeyDown(KeyCode.F) && holder.item != null) holder.DropItem();
 
 
@@ -91,7 +101,7 @@ public class Player : LivingEntity
         }    
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Smoke>() != null)
         {
@@ -99,17 +109,10 @@ public class Player : LivingEntity
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.GetComponent<Smoke>() != null)
-        {
-            Unhide();
-        }
-    }
-
     private void Hide()
     {
-        Debug.Log("hidden");
+        //Debug.Log("hidden");
+        hiddenTimer = hiddenTime;
         sr.color = Color.gray;
         hidden = true;
     }

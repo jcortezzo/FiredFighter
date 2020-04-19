@@ -100,7 +100,7 @@ MonoBehaviour:
   level: 1
   health: 10
   splitTime: 10
-  smokepf: {fileID: 0}
+  smokepf: {fileID: 2402064418071369091, guid: d8998953b986ce1418b0bbe1d2a7fa6b, type: 3}
 --- !u!50 &6356334367410554218
 Rigidbody2D:
   serializedVersion: 4
