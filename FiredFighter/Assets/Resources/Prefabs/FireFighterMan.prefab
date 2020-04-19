@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  speed: 1
+  speed: 5
   health: 10
   direction: {x: 0, y: 0, z: 0}
   flip: 0
@@ -145,10 +145,11 @@ MonoBehaviour:
   fov: {fileID: 4486451672664038650}
   player: {fileID: 0}
   target: {fileID: 0}
-  sight: 0
+  sight: 10
   attackingDistance: 0
   attackSpeed: 0.2
   attackTimer: 0
+  detectPlayer: 0
 --- !u!1001 &2129560913306261677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -161,10 +162,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: FieldOfView
       objectReference: {fileID: 0}
+    - target: {fileID: 2580189132872860753, guid: f836cda9f6909de4f88af472d25f65a3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: deda211578c2d47f69bee1211faed775, type: 2}
     - target: {fileID: 2580189132872860756, guid: f836cda9f6909de4f88af472d25f65a3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.62
       objectReference: {fileID: 0}
     - target: {fileID: 2580189132872860756, guid: f836cda9f6909de4f88af472d25f65a3,
         type: 3}

@@ -12168,6 +12168,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &462016838 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5599623558531220772, guid: c19797eb161c99f44aea55d430e2036d,
+    type: 3}
+  m_PrefabInstance: {fileID: 462016833}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462016834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c93b944c2f42f904eab2f8c9badef24d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &462016840 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5599623558531220770, guid: c19797eb161c99f44aea55d430e2036d,
@@ -15283,23 +15295,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2129560913226825477, guid: 3d3aa77deb1c6ac4ca152f734d115559,
         type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129560913226825477, guid: 3d3aa77deb1c6ac4ca152f734d115559,
-        type: 3}
-      propertyPath: sight
-      value: 10
-      objectReference: {fileID: 0}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 462016838}
     - target: {fileID: 2129560913226825478, guid: 3d3aa77deb1c6ac4ca152f734d115559,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.67
+      value: -6.54
       objectReference: {fileID: 0}
     - target: {fileID: 2129560913226825478, guid: 3d3aa77deb1c6ac4ca152f734d115559,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.59
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 2129560913226825478, guid: 3d3aa77deb1c6ac4ca152f734d115559,
         type: 3}
@@ -15351,15 +15358,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireFighterMan
       objectReference: {fileID: 0}
-    - target: {fileID: 4486451672664038649, guid: 3d3aa77deb1c6ac4ca152f734d115559,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 4486451672664038652, guid: 3d3aa77deb1c6ac4ca152f734d115559,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: deda211578c2d47f69bee1211faed775, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d3aa77deb1c6ac4ca152f734d115559, type: 3}

@@ -50,17 +50,17 @@ public class FieldOfView : MonoBehaviour
             
             if(raycastTarget.collider != null)
             {
-                if(raycastTarget.collider.gameObject.tag == "Player")
-                {
-                    targetCollider = raycastTarget.collider;
-                    Debug.Log("Found player");
-                } else
-                {
-                    Debug.Log("Found " + raycastTarget.collider.gameObject.name);
-                }
+                //if(raycastTarget.collider.gameObject.tag == "Player")
+                //{
+                //    targetCollider = raycastTarget.collider;
+                //    //Debug.Log("Found player");
+                //} else
+                //{
+                //    //Debug.Log("Found " + raycastTarget.collider.gameObject.name);
+                //}
             } else
             {
-                Debug.Log("doesn find sh1t");
+                //Debug.Log("doesn find sh1t");
             }
 
             if (raycastHit2D.collider == null)
@@ -96,12 +96,12 @@ public class FieldOfView : MonoBehaviour
 
     public bool Spot(GameObject go)
     {
-        if (Vector3.Distance(origin, go.transform.position) < viewDistance)
+        if (Vector3.Distance(origin, transform.InverseTransformVector(go.transform.position)) < viewDistance)
         {
             Vector3 dir = (go.transform.position - origin).normalized;
             //if (Vector3.Angle(direction, dir) < fov / 2f)
-            if (Mathf.DeltaAngle(startingAngle - fov / 2f, GetAngleFromVectorFloat(dir)) < fov / 2)
-            {
+            if (Mathf.DeltaAngle(GetAngleFromVectorFloat(direction), GetAngleFromVectorFloat(dir)) < fov / 2)
+                {
                 RaycastHit2D hit = Physics2D.Raycast(origin, dir, viewDistance);
                 if (hit.collider != null)
                 {
