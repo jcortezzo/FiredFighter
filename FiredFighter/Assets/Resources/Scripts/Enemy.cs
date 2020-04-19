@@ -19,7 +19,7 @@ public abstract class Enemy : LivingEntity
     //bool flip = false;
     //public LevelManager levelManager;
 
-    [SerializeField] private FieldOfView fov;
+    [SerializeField] public FieldOfView fov;
 
     Path path;
     Seeker seeker;
@@ -28,14 +28,15 @@ public abstract class Enemy : LivingEntity
     float nextWaypointDistance = 3f;
 
     public Player player;
-    public LivingEntity target;
+    public GameObject target;
     public float sight;
     public float attackingDistance;
     public float attackSpeed = 0.2f;
     public float attackTimer = 0;
     public int TargetSize { get { return targets.Count;  }}
-    public ISet<LivingEntity> targets;
-    public ISet<LivingEntity> friendlyTargets;
+    public ISet<GameObject> targets;
+    public bool detectPlayer;
+    //public ISet<LivingEntity> friendlyTargets;
 
 
     //public List<EffectProbabilityGroup> effectProbability;
@@ -72,18 +73,18 @@ public abstract class Enemy : LivingEntity
 
         //player = LevelManager.Instance.player;
         //alignment = Alignment.FOE;
-        targets = new HashSet<LivingEntity>();
-        friendlyTargets = new HashSet<LivingEntity>();
+        targets = new HashSet<GameObject>();
+        //friendlyTargets = new HashSet<LivingEntity>();
         seeker = this.gameObject.AddComponent<Seeker>();
         //seeker.drawGizmos = true;
 
-        GameObject child = new GameObject();
-        child.transform.parent = this.transform;
-        child.transform.localPosition = new Vector3(0, 0, 0);
+        //GameObject child = new GameObject();
+        //child.transform.parent = this.transform;
+        //child.transform.localPosition = new Vector3(0, 0, 0);
         //child.AddComponent<EnemySight>();
-        CircleCollider2D collider = child.AddComponent<CircleCollider2D>();
-        collider.radius = sight;
-        collider.isTrigger = true;
+        //CircleCollider2D collider = child.AddComponent<CircleCollider2D>();
+        //collider.radius = sight;
+        //collider.isTrigger = true;
         InvokeRepeating("UpdatePath", 0, 0.5f);
     }
 
@@ -127,9 +128,10 @@ public abstract class Enemy : LivingEntity
     public override void Move()
     {
         //if (hitstun > 0) return;
+        //Debug.Log("move pleess");
         if (target == null || path == null) return;
- 
-        if(currentWayPoint >= path.vectorPath.Count)
+        //Debug.Log("move pleess 2");
+        if (currentWayPoint >= path.vectorPath.Count)
         {
             reachEndOfPath = true;
             return;
@@ -180,6 +182,11 @@ public abstract class Enemy : LivingEntity
         float distance = Mathf.Sqrt(Mathf.Pow(target.transform.position.y - this.transform.position.y, 2) +
                                     Mathf.Pow(target.transform.position.x - this.transform.position.x, 2));
         return distance < attackingDistance && !IsFriendTargetingPlayer();
+    }
+
+    public void SetTarget(GameObject go)
+    {
+        target = go;
     }
 
     public bool IsFriendTargetingPlayer()

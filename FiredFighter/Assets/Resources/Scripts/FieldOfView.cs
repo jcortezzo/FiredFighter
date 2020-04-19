@@ -6,12 +6,13 @@ public class FieldOfView : MonoBehaviour
 {
 
     [SerializeField] private LayerMask layerMask;
-
+    
     public float fov = 45;
     public float viewDistance = 1.2f;
     private Mesh mesh;
-    Vector3 origin = Vector3.zero;
+    private Vector3 origin = Vector3.zero;
     private float startingAngle = 0f;
+    private GameObject target;
     Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -31,7 +32,7 @@ public class FieldOfView : MonoBehaviour
         int rayCount = 90;
         float angle = startingAngle;// 0f;
         float angleIncrease = fov / rayCount;
-
+        Collider2D targetCollider = null;
         Vector3[] vertices = new Vector3[rayCount + 1 + 1];
         Vector2[] uv = new Vector2[vertices.Length];
         int[] triangles = new int[rayCount * 3];
@@ -44,6 +45,16 @@ public class FieldOfView : MonoBehaviour
         {
             Vector3 vertex;
             RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.TransformPoint(origin), GetVectorFromAngle(angle), viewDistance, layerMask);
+            RaycastHit2D raycastTarget = Physics2D.Raycast(transform.TransformPoint(origin), GetVectorFromAngle(angle), viewDistance);
+            if(raycastTarget.collider != null)
+            {
+                if(raycastTarget.collider.tag == "Player")
+                {
+                    targetCollider = raycastTarget.collider;
+                    Debug.Log("Found player");
+                }
+            } 
+
             if (raycastHit2D.collider == null)
             {
                 vertex = origin + GetVectorFromAngle(angle) * viewDistance;
@@ -51,6 +62,7 @@ public class FieldOfView : MonoBehaviour
             else
             {
                 vertex = transform.InverseTransformPoint(raycastHit2D.point);
+                
             }
             vertices[vertexIndex] = vertex;
 
@@ -71,6 +83,7 @@ public class FieldOfView : MonoBehaviour
         mesh.uv = uv;
         mesh.triangles = triangles;
         mesh.RecalculateBounds();
+        target = targetCollider != null ? targetCollider.gameObject : null;
     }
 
 
@@ -87,6 +100,11 @@ public class FieldOfView : MonoBehaviour
         startingAngle = GetAngleFromVectorFloat(aimDirection) + fov / 2f;
     }
 
+    public GameObject GetPlayerTarget()
+    {
+        return target;
+    }
+
     private static Vector3 GetVectorFromAngle(float angle)
     {
         float angleRad = angle * (Mathf.PI / 180f);
@@ -100,4 +118,6 @@ public class FieldOfView : MonoBehaviour
         if (n < 0) n += 360;
         return n;
     }
+
+
 }

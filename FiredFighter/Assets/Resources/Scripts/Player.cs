@@ -6,7 +6,7 @@ public class Player : LivingEntity
 {
     //public ParticleSystem dustParticle;
 
-    [SerializeField] private FieldOfView fov;
+    //[SerializeField] private FieldOfView fov;
 
     protected override void Start()
     {
@@ -22,8 +22,8 @@ public class Player : LivingEntity
     {
         //GetDirectionalInput();
         base.Update();
-        fov.SetOrigin(transform.position);
-        fov.SetAimDirection(direction);
+        //fov.SetOrigin(transform.position);
+        //fov.SetAimDirection(direction);
         //if (Input.GetKeyDown(KeyCode.R) && (weaponHolder.primary == null || !weaponHolder.primary.attacking)) weaponHolder.SwitchWeapon();
         //if (Input.GetKeyDown(KeyCode.F) && weaponHolder.primary != null && !weaponHolder.primary.attacking) weaponHolder.DropWeapon(true);
 
