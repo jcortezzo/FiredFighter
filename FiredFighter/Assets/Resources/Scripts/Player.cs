@@ -46,8 +46,8 @@ public class Player : LivingEntity
     public override void FixedUpdate()
     {
         base.FixedUpdate();
-        fov.SetOrigin(rb.position);//transform.position);
-        fov.SetAimDirection(direction);
+        //fov.SetOrigin(rb.position);//transform.position);
+        //fov.SetAimDirection(direction);
         //Debug.Log(direction);
     }
 

@@ -35,6 +35,9 @@ public abstract class Enemy : LivingEntity
     public float attackTimer = 0;
     public int TargetSize { get { return targets.Count;  }}
     public ISet<GameObject> targets;
+
+    public float followTimeElapsed;
+    public float followTimeMax = 2f;
     public bool detectPlayer;
     //public ISet<LivingEntity> friendlyTargets;
 
@@ -85,7 +88,7 @@ public abstract class Enemy : LivingEntity
         //CircleCollider2D collider = child.AddComponent<CircleCollider2D>();
         //collider.radius = sight;
         //collider.isTrigger = true;
-        InvokeRepeating("UpdatePath", 0, 0.1f);
+        InvokeRepeating("UpdatePath", 0, 0.05f);
     }
 
     private void UpdatePath()
@@ -131,13 +134,27 @@ public abstract class Enemy : LivingEntity
         //fov.SetAimDirection(direction);
 
         //target = player.gameObject;
-        if (!player.IsHidden() && fov.Spot(player.gameObject))
+        if(target != null && target.tag == "Player")
+        {
+            if(detectPlayer)
+            {
+                followTimeElapsed = followTimeMax;
+
+            } else
+            {
+                followTimeElapsed -= Time.deltaTime;
+            }
+            if(followTimeElapsed <= 0)
+            {
+                target = GetClosestFire();
+            }
+        } else if (!player.IsHidden() && fov.Spot(player.gameObject))
         {
             Debug.Log("player detected!");
             target = player.gameObject;
             detectPlayer = true;
         }
-        else
+        else 
         {
             detectPlayer = false;
             target = GetClosestFire();
@@ -243,7 +260,7 @@ public abstract class Enemy : LivingEntity
         {
             Vector3 dir = target.transform.position - this.transform.position;
             direction = dir.normalized;
-            Debug.Log(GetAngleFromVectorFloat(direction) + " " + direction);
+            //Debug.Log(GetAngleFromVectorFloat(direction) + " " + direction);
         }
         //if (weaponHolder.primary != null && weaponHolder.primary.attacking || target == null) return;
         //direction = (target.transform.position - this.transform.position).normalized;
