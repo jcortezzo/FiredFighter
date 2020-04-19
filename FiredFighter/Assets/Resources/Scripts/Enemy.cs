@@ -113,13 +113,28 @@ public abstract class Enemy : LivingEntity
             EndLife();
             //levelManager.UpdateUI();
         }
-        fov.SetOrigin(transform.position);
+        float angle = GetAngleFromVectorFloat(direction);
+        //fov.SetOrigin(new Vector3(Mathf.Cos(angle), Mathf.Sin(angle)));//transform.position);
+        //fov.SetAimDirection(direction);
+        float offset = 0.75f;
+        float x = transform.position.x + (offset * Mathf.Cos(angle));
+        float y = transform.position.y + (offset * Mathf.Sin(angle));
+        fov.SetOrigin(new Vector3(x, y, transform.position.z));
+        //fov.SetOrigin(transform.position);
         fov.SetAimDirection(direction);
         if (fov.Spot(player.gameObject))
         {
             Debug.Log("player detected!");
         }
         base.Update();
+    }
+
+    private static float GetAngleFromVectorFloat(Vector3 dir)
+    {
+        dir = dir.normalized;
+        float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if (n < 0) n += 360;
+        return n;
     }
 
     public virtual void EndLife()
