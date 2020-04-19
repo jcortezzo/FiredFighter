@@ -11,6 +11,7 @@ public class FieldOfView : MonoBehaviour
     public float viewDistance = 1.2f;
     private Mesh mesh;
     private Vector3 origin = Vector3.zero;
+    private Vector3 direction = Vector3.zero;
     private float startingAngle = 0f;
     private GameObject target;
     Rigidbody2D rb;
@@ -93,6 +94,23 @@ public class FieldOfView : MonoBehaviour
         target = targetCollider != null ? targetCollider.gameObject : null;
     }
 
+    public bool Spot(GameObject go)
+    {
+        if (Vector3.Distance(origin, go.transform.position) < viewDistance)
+        {
+            Vector3 dir = (go.transform.position - origin).normalized;
+            //if (Vector3.Angle(direction, dir) < fov / 2f)
+            if (Mathf.DeltaAngle(startingAngle - fov / 2f, GetAngleFromVectorFloat(dir)) < fov / 2)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(origin, dir, viewDistance);
+                if (hit.collider != null)
+                {
+                    return hit.collider.gameObject == go;
+                }
+            }
+        }
+        return false;
+    }
 
     public void SetOrigin(Vector3 origin)
     {
@@ -106,6 +124,7 @@ public class FieldOfView : MonoBehaviour
     public void SetAimDirection(Vector3 aimDirection)
     {
         startingAngle = GetAngleFromVectorFloat(aimDirection) + fov / 2f;
+        direction = aimDirection;
     }
 
     public GameObject GetPlayerTarget()
