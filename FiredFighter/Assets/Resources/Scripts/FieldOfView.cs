@@ -96,7 +96,8 @@ public class FieldOfView : MonoBehaviour
         if (Vector3.Distance(origin, go.transform.position) < viewDistance)
         {
             Vector3 dir = (go.transform.position - origin).normalized;
-            if (Vector3.Angle(direction, dir) < fov / 2f)
+            //if (Vector3.Angle(direction, dir) < fov / 2f)
+            if (Mathf.DeltaAngle(startingAngle - fov / 2f, GetAngleFromVectorFloat(dir)) < fov / 2)
             {
                 RaycastHit2D hit = Physics2D.Raycast(origin, dir, viewDistance);
                 if (hit.collider != null)
