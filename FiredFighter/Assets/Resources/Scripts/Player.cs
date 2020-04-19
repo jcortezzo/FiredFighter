@@ -43,7 +43,7 @@ public class Player : LivingEntity
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = this.transform.position.z;
         direction = (mousePos - this.transform.position).normalized;
-        Debug.Log(direction);
+        //Debug.Log(direction);
     }
 
     public override void Move()
@@ -75,8 +75,9 @@ public class Player : LivingEntity
         //        weaponHolder.primary != null && !weaponHolder.primary.attacking;
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    public override void OnCollisionStay2D(Collision2D collision)
     {
+        base.OnCollisionStay2D(collision);
         if(collision.gameObject.tag == "Item")
         {
             if(Input.GetKeyDown(KeyCode.E))

@@ -95,6 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d189b89415be724e83f987b98916c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
+  size: 2
+  woodPrefab: {fileID: 5390005589211352037, guid: 4ad6b1af2ddd35f4f933bf31321f3c66,
+    type: 3}
 --- !u!61 &4775073867979633938
 BoxCollider2D:
   m_ObjectHideFlags: 0

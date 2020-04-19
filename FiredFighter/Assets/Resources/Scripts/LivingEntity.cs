@@ -72,8 +72,28 @@ public abstract class LivingEntity : MonoBehaviour
             //    weaponEndRotation = Quaternion.AngleAxis(angle + f * (weaponHolder.primary.swingRadius / 2), -this.transform.forward);
             //    weaponHolder.transform.rotation = Quaternion.AngleAxis(angle - f * (weaponHolder.primary.swingRadius / 2), -this.transform.forward);
             //}
+            if(holder.weapon != null)
+            {
+                holder.weapon.Attack();
+            }
         }
     }
+
+
+    public virtual void OnCollisionStay2D(Collision2D collision)
+    {
+        Breakable breakable = collision.gameObject.GetComponent<Breakable>();
+        if (breakable != null)
+        {
+            
+            if (IsAttacking())
+            {
+                Debug.Log("break u ding");
+                breakable.TakeHit(1, 1);
+            }
+        }
+    }
+
 
     public abstract bool IsAttacking();
 
