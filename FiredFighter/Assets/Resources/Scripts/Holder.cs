@@ -6,7 +6,7 @@ using UnityEngine;
 public class Holder : MonoBehaviour
 {
     public GameObject item;
-    public Weapon weapon;
+    public Tool tool;
     
     // Start is called before the first frame update
     void Start()

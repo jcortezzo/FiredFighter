@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : MonoBehaviour
+public class Bucket : Tool
 {
-    // Start is called before the first frame update
+    public int water;
+
     void Start()
     {
         
@@ -16,5 +17,13 @@ public abstract class Weapon : MonoBehaviour
         
     }
 
-    public abstract void Attack();
+    public override void Action()
+    {
+        
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        
+    }
 }

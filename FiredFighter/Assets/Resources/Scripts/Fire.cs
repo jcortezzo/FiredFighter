@@ -92,8 +92,8 @@ public class Fire : MonoBehaviour, IInteractable
             Destroy(this.gameObject);
         } else if(collision.gameObject.tag == "Item")
         {
-            Wood wood = collision.gameObject.GetComponent<Wood>();
-            if (wood != null) BurnWood(wood);
+            IFlammable flammable = collision.gameObject.GetComponent<IFlammable>();
+            if (flammable != null) BurnWood(flammable);
         }
     }
 
@@ -104,7 +104,7 @@ public class Fire : MonoBehaviour, IInteractable
 
     public void Interact(Player player)
     {
-        Wood wood = player.holder.item.GetComponent<Wood>();
+        IFlammable wood = player.holder.item.GetComponent<IFlammable>();
         if ( wood != null)
         {
             Debug.Log("Bigger fire!!");
@@ -112,27 +112,27 @@ public class Fire : MonoBehaviour, IInteractable
         }
     }
 
-    private void BurnWood(Wood wood)
+    private void BurnWood(IFlammable flammable)
     {
         health += 5;
-        Destroy(wood.gameObject);
-        StartCoroutine(Smoke(wood));
+        Destroy(flammable.GetGameObject());
+        StartCoroutine(Smoke(flammable));
     }
 
-    IEnumerator Smoke(Wood wood)
+    IEnumerator Smoke(IFlammable flammable)
     {
         int cycles = 5;
         for (int i = 0; i < cycles; i++)
         {
-            CreateSmoke(wood);
+            CreateSmoke(flammable);
             yield return new WaitForSeconds(0.2f);
         }
     }
 
-    private void CreateSmoke(Wood wood)
+    private void CreateSmoke(IFlammable flammable)
     {
         Debug.Log("smoke!");
-        for (int i = 0; i < /*wood.size*/5; i++)
+        for (int i = 0; i < flammable.SmokeNumber(); i++)
         {
             Smoke smoke = Instantiate(smokepf, transform.position, Quaternion.identity).GetComponent<Smoke>();
             smoke.GetComponent<Rigidbody2D>().velocity = Random.insideUnitCircle.normalized * 0.5f;
