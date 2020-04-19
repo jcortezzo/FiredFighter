@@ -18,6 +18,9 @@ public abstract class Enemy : LivingEntity
     //SpriteRenderer weaponSR;
     //bool flip = false;
     //public LevelManager levelManager;
+
+    [SerializeField] private FieldOfView fov;
+
     Path path;
     Seeker seeker;
     int currentWayPoint = 0;
@@ -33,15 +36,13 @@ public abstract class Enemy : LivingEntity
     public int TargetSize { get { return targets.Count;  }}
     public ISet<LivingEntity> targets;
     public ISet<LivingEntity> friendlyTargets;
-    public float dropRate = 0.025f;
-    public float statedropRate = 0.05f;
-    public bool enableDrop = true;
+
 
     //public List<EffectProbabilityGroup> effectProbability;
     //private EffectRangeSearch effectRangeSearch;
 
-    private const string WEAPON_GIVER_LOC = "Prefabs/Weapons/WeaponGiver";
-    private const string STAT_GIVER_LOC = "Prefabs/Stats/StatGiver";
+    //private const string WEAPON_GIVER_LOC = "Prefabs/Weapons/WeaponGiver";
+    //private const string STAT_GIVER_LOC = "Prefabs/Stats/StatGiver";
     //public float damage;
     //public float hitstun = 0;
     //private float lastHitTime;
@@ -111,7 +112,8 @@ public abstract class Enemy : LivingEntity
             EndLife();
             //levelManager.UpdateUI();
         }
-
+        fov.SetOrigin(transform.position);
+        fov.SetAimDirection(direction);
         base.Update();
     }
 

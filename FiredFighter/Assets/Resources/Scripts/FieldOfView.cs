@@ -21,8 +21,8 @@ public class FieldOfView : MonoBehaviour
         GetComponent<MeshFilter>().mesh = mesh;
         rb = GetComponent<Rigidbody2D>();
     }
-        
-   
+
+
 
     // Update is called once per frame
     void LateUpdate()
@@ -43,14 +43,14 @@ public class FieldOfView : MonoBehaviour
         for (int i = 0; i <= rayCount; i++)
         {
             Vector3 vertex;
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, GetVectorFromAngle(angle), viewDistance, layerMask);
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.TransformPoint(origin), GetVectorFromAngle(angle), viewDistance, layerMask);
             if (raycastHit2D.collider == null)
             {
                 vertex = origin + GetVectorFromAngle(angle) * viewDistance;
             }
             else
             {
-                vertex = raycastHit2D.point;
+                vertex = transform.InverseTransformPoint(raycastHit2D.point);
             }
             vertices[vertexIndex] = vertex;
 
@@ -75,7 +75,7 @@ public class FieldOfView : MonoBehaviour
 
     public void SetOrigin(Vector3 origin)
     {
-        this.origin = origin;
+        this.origin = transform.InverseTransformPoint(origin);
         //origin = transform.position;
         //rb.MovePosition(origin);
         //this.origin = rb.position;
