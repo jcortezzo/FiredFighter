@@ -122,7 +122,7 @@ public abstract class Enemy : LivingEntity
         fov.SetOrigin(new Vector3(x, y, transform.position.z));
         //fov.SetOrigin(transform.position);
         fov.SetAimDirection(direction);
-        if (fov.Spot(player.gameObject))
+        if (!player.IsHidden() && fov.Spot(player.gameObject))
         {
             //Debug.Log("player detected!");
         }
