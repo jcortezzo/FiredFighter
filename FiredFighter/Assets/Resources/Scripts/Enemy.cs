@@ -85,7 +85,7 @@ public abstract class Enemy : LivingEntity
         //CircleCollider2D collider = child.AddComponent<CircleCollider2D>();
         //collider.radius = sight;
         //collider.isTrigger = true;
-        InvokeRepeating("UpdatePath", 0, 0.5f);
+        InvokeRepeating("UpdatePath", 0, 0.1f);
     }
 
     private void UpdatePath()
@@ -94,7 +94,7 @@ public abstract class Enemy : LivingEntity
         {
             if (target != null)
             {
-                //seeker.StartPath(rb.position, target.transform.position, OnPathComplete);
+                seeker.StartPath(rb.position, target.transform.position, OnPathComplete);
             }
             else
             {
@@ -119,27 +119,46 @@ public abstract class Enemy : LivingEntity
             EndLife();
             //levelManager.UpdateUI();
         }
-        float angle = GetAngleFromVectorFloat(direction);
-        Debug.Log(angle  + " " + direction);
+        //float angle = GetAngleFromVectorFloat(direction);
+
         //fov.SetOrigin(new Vector3(Mathf.Cos(angle), Mathf.Sin(angle)));//transform.position);
         //fov.SetAimDirection(direction);
-        float offset = 0.75f;
-        float x = transform.position.x + (offset * Mathf.Cos(angle));
-        float y = transform.position.y + (offset * Mathf.Sin(angle));
-        fov.SetOrigin(new Vector3(x, y, transform.position.z));
-        //fov.SetOrigin(transform.position);
-        fov.SetAimDirection(direction);
+        //float offset = 0.75f;
+        //float x = transform.position.x + (offset * Mathf.Cos(angle));
+        //float y = transform.position.y + (offset * Mathf.Sin(angle));
+        //fov.SetOrigin(new Vector3(x, y, transform.position.z));
+        ////fov.SetOrigin(transform.position);
+        //fov.SetAimDirection(direction);
+
+        //target = player.gameObject;
         if (!player.IsHidden() && fov.Spot(player.gameObject))
         {
             Debug.Log("player detected!");
             target = player.gameObject;
             detectPlayer = true;
-        } else
+        }
+        else
         {
             detectPlayer = false;
             target = GetClosestFire();
         }
         base.Update();
+    }
+
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        float angle = GetAngleFromVectorFloat(direction);
+
+        //fov.SetOrigin(new Vector3(Mathf.Cos(angle), Mathf.Sin(angle)));//transform.position);
+        //fov.SetAimDirection(direction);
+        float offset = 0.75f;
+        float x = transform.position.x + (offset * Mathf.Cos(Mathf.Deg2Rad * angle));
+        float y = transform.position.y + (offset * Mathf.Sin(Mathf.Deg2Rad * angle));
+        fov.SetOrigin(new Vector3(x, y, transform.position.z));
+        fov.SetAimDirection(direction);
+        //fov.SetOrigin(transform.position);
+        
     }
 
     private GameObject GetClosestFire()
@@ -223,7 +242,8 @@ public abstract class Enemy : LivingEntity
         if(target != null)
         {
             Vector3 dir = target.transform.position - this.transform.position;
-            //direction = dir.normalized;
+            direction = dir.normalized;
+            Debug.Log(GetAngleFromVectorFloat(direction) + " " + direction);
         }
         //if (weaponHolder.primary != null && weaponHolder.primary.attacking || target == null) return;
         //direction = (target.transform.position - this.transform.position).normalized;

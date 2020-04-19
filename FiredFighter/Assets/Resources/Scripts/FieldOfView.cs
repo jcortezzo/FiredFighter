@@ -128,11 +128,11 @@ public class FieldOfView : MonoBehaviour
 
     public void SetOrigin(Vector3 origin)
     {
-        Vector3 vec = transform.InverseTransformPoint(origin);
-        this.origin = vec;// + (vec - transform.localPosition);
+        //Vector3 vec = transform.InverseTransformPoint(origin);
+        //this.origin = vec;// + (vec - transform.localPosition);
         //origin = transform.position;
-        //rb.MovePosition(origin);
-        //this.origin = rb.position;
+        rb.MovePosition(transform.InverseTransformPoint(origin));
+        this.origin = rb.position;
     }
 
     public void SetAimDirection(Vector3 aimDirection)
