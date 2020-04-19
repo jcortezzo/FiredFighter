@@ -93,7 +93,13 @@ public abstract class Enemy : LivingEntity
         if(seeker.IsDone())
         {
             if (target != null)
-                seeker.StartPath(rb.position, target.transform.position, OnPathComplete);
+            {
+                //seeker.StartPath(rb.position, target.transform.position, OnPathComplete);
+            }
+            else
+            {
+                rb.velocity = Vector2.zero;
+            }
         }
     }
 
@@ -114,6 +120,7 @@ public abstract class Enemy : LivingEntity
             //levelManager.UpdateUI();
         }
         float angle = GetAngleFromVectorFloat(direction);
+        Debug.Log(angle  + " " + direction);
         //fov.SetOrigin(new Vector3(Mathf.Cos(angle), Mathf.Sin(angle)));//transform.position);
         //fov.SetAimDirection(direction);
         float offset = 0.75f;
@@ -122,11 +129,39 @@ public abstract class Enemy : LivingEntity
         fov.SetOrigin(new Vector3(x, y, transform.position.z));
         //fov.SetOrigin(transform.position);
         fov.SetAimDirection(direction);
-        if (fov.Spot(player.gameObject))
+        if (!player.IsHidden() && fov.Spot(player.gameObject))
         {
-            //Debug.Log("player detected!");
+            Debug.Log("player detected!");
+            target = player.gameObject;
+            detectPlayer = true;
+        } else
+        {
+            detectPlayer = false;
+            target = GetClosestFire();
         }
         base.Update();
+    }
+
+    private GameObject GetClosestFire()
+    {
+        List<GameObject> list = GlobalValues.Instance.onFireObjects;
+        GameObject closest = null;
+        float minDis = float.MaxValue;
+        foreach (GameObject go in list)
+        {
+            if (closest == null) closest = go;
+            else
+            {
+                if (go == null) continue;
+                float dis = Vector3.Distance(this.transform.position, go.transform.position);
+                if (dis < minDis)
+                {
+                    minDis = dis;
+                    closest = go;
+                }
+            }
+        }
+        return closest;
     }
 
     private static float GetAngleFromVectorFloat(Vector3 dir)
@@ -185,6 +220,11 @@ public abstract class Enemy : LivingEntity
 
     public override void GetDirectionalInput()
     {
+        if(target != null)
+        {
+            Vector3 dir = target.transform.position - this.transform.position;
+            //direction = dir.normalized;
+        }
         //if (weaponHolder.primary != null && weaponHolder.primary.attacking || target == null) return;
         //direction = (target.transform.position - this.transform.position).normalized;
         //if (weaponHolder.primary != null && !weaponHolder.primary.attacking)

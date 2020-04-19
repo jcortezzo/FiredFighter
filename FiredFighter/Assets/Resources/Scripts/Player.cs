@@ -6,11 +6,14 @@ public class Player : LivingEntity
 {
     //public ParticleSystem dustParticle;
 
-    //[SerializeField] private FieldOfView fov;
+    [SerializeField] private FieldOfView fov;
+
+    private bool hidden;
     
     protected override void Start()
     {
         base.Start();
+        sr = GetComponent<SpriteRenderer>();
         GetDirectionalInput();
         //fov = GetComponent<FieldOfView>();
         //health = GlobalValues.Instance.playerHealth;
@@ -33,8 +36,8 @@ public class Player : LivingEntity
     public override void FixedUpdate()
     {
         base.FixedUpdate();
-        //fov.SetOrigin(rb.position);//transform.position);
-        //fov.SetAimDirection(direction);
+        fov.SetOrigin(rb.position);//transform.position);
+        fov.SetAimDirection(direction);
         //Debug.Log(direction);
     }
 
@@ -86,6 +89,40 @@ public class Player : LivingEntity
                 interact.Interact(this);
             }
         }    
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Smoke>() != null)
+        {
+            Hide();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Smoke>() != null)
+        {
+            Unhide();
+        }
+    }
+
+    private void Hide()
+    {
+        Debug.Log("hidden");
+        sr.color = Color.gray;
+        hidden = true;
+    }
+
+    private void Unhide()
+    {
+        sr.color = Color.white;
+        hidden = false;
+    }
+
+    public bool IsHidden()
+    {
+        return hidden;
     }
 
     private void OnDestroy()

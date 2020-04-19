@@ -17,6 +17,10 @@ public class Fire : MonoBehaviour, IInteractable
     public float health = 10;
     public float splitTime = 10f;
     private float splitTimer;// = splitTime;
+
+    [SerializeField] private Transform smokepf;
+    //[SerializeField] private Smoke smoke;
+
     
     // Start is called before the first frame update
     void Start()
@@ -112,12 +116,27 @@ public class Fire : MonoBehaviour, IInteractable
     {
         health += 5;
         Destroy(wood.gameObject);
-        SmokeUp();
+        StartCoroutine(Smoke(wood));
     }
 
-    private void SmokeUp()
+    IEnumerator Smoke(Wood wood)
     {
+        int cycles = 5;
+        for (int i = 0; i < cycles; i++)
+        {
+            CreateSmoke(wood);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
 
+    private void CreateSmoke(Wood wood)
+    {
+        Debug.Log("smoke!");
+        for (int i = 0; i < /*wood.size*/5; i++)
+        {
+            Smoke smoke = Instantiate(smokepf, transform.position, Quaternion.identity).GetComponent<Smoke>();
+            smoke.GetComponent<Rigidbody2D>().velocity = Random.insideUnitCircle.normalized * 0.5f;
+        }
     }
 
     protected enum Directions {
