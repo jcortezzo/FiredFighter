@@ -143,36 +143,23 @@ public abstract class Enemy : LivingEntity
         {
             detectPlayer = false;
             target = null;
-            target = GetClosestFire();
+            if (HasBucket()) {
+                target = !BucketIsEmpty() ? GetClosestFire() : GetClosestWaterSource();
+            }
         }
 
-        //if(target != null && target.tag == "Player")
-        //{
-        //    if(detectPlayer)
-        //    {
-        //        followTimeElapsed = followTimeMax;
-
-        //    } else
-        //    {
-        //        followTimeElapsed -= Time.deltaTime;
-        //    }
-        //    if(followTimeElapsed <= 0)
-        //    {
-        //        target = GetClosestFire();
-        //    }
-        //}
-        //else if (!player.IsHidden() && fov.Spot(player.gameObject))
-        //{
-        //    Debug.Log("player detected!");
-        //    target = player.gameObject;
-        //    detectPlayer = true;
-        //}
-        //else 
-        //{
-        //    detectPlayer = false;
-        //    target = GetClosestFire();
-        //}
         base.Update();
+    }
+
+    public bool HasBucket()
+    {
+        return holder.tool.GetComponent<Bucket>() != null;
+    }
+
+    public bool BucketIsEmpty()
+    {
+        if (!HasBucket()) return false;
+        return holder.tool.GetComponent<Bucket>().IsEmpty();
     }
 
     public override void FixedUpdate()
@@ -194,6 +181,28 @@ public abstract class Enemy : LivingEntity
     private GameObject GetClosestFire()
     {
         List<GameObject> list = GlobalValues.Instance.onFireObjects;
+        GameObject closest = null;
+        float minDis = float.MaxValue;
+        foreach (GameObject go in list)
+        {
+            if (closest == null) closest = go;
+            else
+            {
+                if (go == null) continue;
+                float dis = Vector3.Distance(this.transform.position, go.transform.position);
+                if (dis < minDis)
+                {
+                    minDis = dis;
+                    closest = go;
+                }
+            }
+        }
+        return closest;
+    }
+
+    private GameObject GetClosestWaterSource()
+    {
+        List<GameObject> list = GlobalValues.Instance.onWaterObjects;
         GameObject closest = null;
         float minDis = float.MaxValue;
         foreach (GameObject go in list)

@@ -9,7 +9,7 @@ public class Fire : MonoBehaviour, IInteractable
     public static float damage = 1;
     public static int numFires = 0;
 
-    public static HashSet<Vector3> firePositions = new HashSet<Vector3>();
+    public static Dictionary<Vector3, Fire> firePositions = new Dictionary<Vector3, Fire>();
     
     private const float SPREAD_DISTANCE = 1f;
     private const int MAX_LEVEL = 7;
@@ -24,8 +24,12 @@ public class Fire : MonoBehaviour, IInteractable
     // Start is called before the first frame update
     void Start()
     {
-        if (firePositions.Contains(transform.position)) Destroy(gameObject);
-        firePositions.Add(transform.position);
+        if (firePositions.ContainsKey(transform.position))
+        {
+            Destroy(gameObject);
+            return;
+        }
+        firePositions.Add(transform.position, this);
         //transform.localScale *= level;
         numFires++;
         splitTimer = splitTime;
@@ -42,7 +46,7 @@ public class Fire : MonoBehaviour, IInteractable
         else
         {
             int n = Split();
-            level = Mathf.Max(level + 1, MAX_LEVEL);
+            level = Mathf.Min(level + 1, MAX_LEVEL);
             //transform.localScale *= level;
             if (n > 0) damage++;
             splitTimer = splitTime;
@@ -71,7 +75,7 @@ public class Fire : MonoBehaviour, IInteractable
         for (int i = 0; i < fires.Length; i++)
         {
             Vector3 position = transform.position + positions[i];
-            if (firePositions.Contains(position)) continue;
+            if (firePositions.ContainsKey(position)) continue;
             fires[i] = Instantiate(this, position, Quaternion.identity);
             fires[i].level = level;
             GlobalValues.Instance.onFireObjects.Add(fires[i].gameObject);
@@ -101,7 +105,7 @@ public class Fire : MonoBehaviour, IInteractable
 
     private void OnDestroy()
     {
-        firePositions.Remove(transform.position);
+        //firePositions.Remove(transform.position);
     }
 
     public void Interact(Player player)
