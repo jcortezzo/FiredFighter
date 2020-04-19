@@ -25,6 +25,7 @@ public class Holder : MonoBehaviour
         {
             item.transform.parent = null;
             item.transform.rotation = Quaternion.identity;
+            item.transform.position = new Vector3(item.transform.position.x, item.transform.position.y, -1);
         }
     }
 }

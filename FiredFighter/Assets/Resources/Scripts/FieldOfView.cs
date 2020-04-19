@@ -20,6 +20,8 @@ public class FieldOfView : MonoBehaviour
     void Start()
     {
         mesh = new Mesh();
+        MeshRenderer mr = GetComponent<MeshRenderer>();
+        mr.material.SetColor("_TintColor", Color.yellow);
         GetComponent<MeshFilter>().mesh = mesh;
         rb = GetComponent<Rigidbody2D>();
     }
