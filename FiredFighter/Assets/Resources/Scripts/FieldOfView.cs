@@ -96,16 +96,28 @@ public class FieldOfView : MonoBehaviour
 
     public bool Spot(GameObject go)
     {
-        if (Vector3.Distance(origin, transform.InverseTransformVector(go.transform.position)) < viewDistance)
+        //Vector3 adjustedOrigin = transform.TransformPoint(origin);
+        Vector3 adjPos = transform.InverseTransformPoint(go.transform.position);
+        if (Vector3.Distance(origin, adjPos) < viewDistance)
         {
-            Vector3 dir = (go.transform.position - origin).normalized;
+            //Debug.Log("Within distance");
+            Vector3 dir = (adjPos - origin).normalized;
             //if (Vector3.Angle(direction, dir) < fov / 2f)
-            if (Mathf.DeltaAngle(GetAngleFromVectorFloat(direction), GetAngleFromVectorFloat(dir)) < fov / 2)
-                {
-                RaycastHit2D hit = Physics2D.Raycast(origin, dir, viewDistance);
+            //GetAngleFromVectorFloat(direction)
+            //startingAngle - fov / 2f
+            if (Mathf.Abs(Mathf.DeltaAngle(GetAngleFromVectorFloat(direction), GetAngleFromVectorFloat(dir))) < fov / 2)
+            {
+                //Debug.Log("Within angle");
+                RaycastHit2D hit = Physics2D.Raycast(transform.TransformPoint(origin), dir, viewDistance);
+                Debug.DrawRay(transform.TransformPoint(origin), dir);
                 if (hit.collider != null)
                 {
+                    //Debug.DrawRay(origin, dir);
+                    //return true;
                     return hit.collider.gameObject == go;
+                } else
+                {
+                    Debug.Log("what the fuck");
                 }
             }
         }
