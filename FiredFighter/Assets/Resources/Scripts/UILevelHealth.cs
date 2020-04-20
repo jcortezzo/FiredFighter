@@ -10,6 +10,10 @@ public class UILevelHealth : MonoBehaviour
     public LevelManager level;
     public TextMeshProUGUI text;
     public Image healthImage;
+    public Image fireHealthImage;
+
+    private float fireMaxHealth;
+    private float fireHealthPercentage;
 
     private int healthMax;
     private float percentage;
@@ -19,6 +23,9 @@ public class UILevelHealth : MonoBehaviour
         level = LevelManager.Instance;
         healthMax = (int)level.houseHealth;
         percentage = (healthMax - level.houseHealth) / healthMax;
+
+        fireMaxHealth = Mathf.Max(fireMaxHealth, Fire.totalHealth);
+        fireHealthPercentage = Fire.totalHealth / fireMaxHealth;
     }
 
     // Update is called once per frame
@@ -26,6 +33,10 @@ public class UILevelHealth : MonoBehaviour
     {
         percentage = (healthMax - level.houseHealth) / healthMax;
         healthImage.fillAmount = percentage;
+
+        fireMaxHealth = Mathf.Max(fireMaxHealth, Fire.totalHealth);
+        fireHealthPercentage = Fire.totalHealth / fireMaxHealth;
+        fireHealthImage.fillAmount = fireHealthPercentage;
         DisplayText();
     }
 
