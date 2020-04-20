@@ -128,7 +128,7 @@ public class Fire : MonoBehaviour, IInteractable
         if(collision.gameObject.tag == "Wall")
         {
             firePositions.Remove(transform.position);
-            damage--;
+            //damage--;
             Destroy(this.gameObject);
         } else if(collision.gameObject.GetComponent<IFlammable>() != null)
         {
@@ -162,6 +162,7 @@ public class Fire : MonoBehaviour, IInteractable
     private void BurnWood(IFlammable flammable)
     {
         level += flammable.FlameIncreaseNumber();
+        totalHealth += flammable.FlameIncreaseNumber();
         flammable.Burn();
         StartCoroutine(Smoke(flammable));
     }

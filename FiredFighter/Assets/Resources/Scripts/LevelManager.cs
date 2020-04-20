@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform winFirepf;
     public float timeElapse;
     public float timeMax = 10f;
+    public bool fireStarted = false;
     // Start is called before the first frame update
     private void Awake()
     {
