@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -40,6 +42,22 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(houseHealth <= 0)
+        {
+            Win();
+        }
         
     }
+
+    private void Win()
+    {
+        
+    }
+
+    public void Lose()
+    {
+        SceneManager.LoadScene("Lose");
+    }
+
+
 }

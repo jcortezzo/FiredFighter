@@ -353,6 +353,7 @@ public abstract class Enemy : LivingEntity
         if(collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("touching player");
+            LevelManager.Instance.Lose();
         }
     }
 
@@ -362,6 +363,7 @@ public abstract class Enemy : LivingEntity
         if (collision.gameObject.CompareTag("Player"))
         {
             //Debug.Log("touching player");
+            LevelManager.Instance.Lose();
         }
     }
 }
