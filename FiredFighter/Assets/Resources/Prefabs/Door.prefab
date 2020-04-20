@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5979618078344871831}
   - component: {fileID: 5979618078344871830}
   - component: {fileID: 5979618078344871913}
+  - component: {fileID: 3128810571315297602}
   m_Layer: 10
   m_Name: Door
   m_TagString: Item
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5979618078344871912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.58, y: -0.68, z: -5}
-  m_LocalScale: {x: 1.39, y: 2.63, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -85,7 +86,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 9205419524054275605, guid: e201ddf00edd9ad46a1f79bd2db47b18,
+  m_Sprite: {fileID: 9087207327684497215, guid: cc043163d3905fb46940bb68361a5558,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -131,16 +132,35 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.017905712, y: 0.06565499}
+  m_Offset: {x: -0.04316759, y: 0.010077953}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 4.35, y: 4.34}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4866972, y: 0.86869}
+  m_Size: {x: 4.056897, y: 4.0876665}
   m_EdgeRadius: 0
+--- !u!95 &3128810571315297602
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5979618078344871912}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 88580c30f81fd7d4187272628de94e3e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
