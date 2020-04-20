@@ -141,11 +141,11 @@ public abstract class Enemy : LivingEntity
             {
                 followTimeElapsed -= time;
             }
-            fov.SetColor(Color.white);
+            fov.SetColor(Color.yellow);
             fov.SetColorAlpha(.5f);
         } else
         {
-            fov.SetColor(Color.white);
+            fov.SetColor(Color.yellow);
             fov.SetColorAlpha(.5f);
             detectPlayer = false;
             target = null;
