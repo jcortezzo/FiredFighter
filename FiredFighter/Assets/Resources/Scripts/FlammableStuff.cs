@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chair : Breakable, IInteractable, IFlammable
+public class FlammableStuff : Breakable, IInteractable, IFlammable
 {
     public int smokeNumber;
     public int flameIncrease;

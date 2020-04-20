@@ -27999,6 +27999,29 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 419917572905874102, guid: 3281b6ecdbae10c4cab28a74239b41ea, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3281b6ecdbae10c4cab28a74239b41ea, type: 3}
+--- !u!1 &623706471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 419917572905874101, guid: 3281b6ecdbae10c4cab28a74239b41ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 623706470}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &623706472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623706471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d189b89415be724e83f987b98916c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  size: 0
+  woodPrefab: {fileID: 0}
+  smokeNumber: 0
+  flameIncrease: 0
 --- !u!114 &675244283 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9008948392931152197, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
@@ -29135,35 +29158,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4775073867979633935, guid: c89dd51e30f01c84c9bd3b3d03a82a9a,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.307
-      objectReference: {fileID: 0}
-    - target: {fileID: 4775073867979633935, guid: c89dd51e30f01c84c9bd3b3d03a82a9a,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.307
-      objectReference: {fileID: 0}
-    - target: {fileID: 4775073867979633935, guid: c89dd51e30f01c84c9bd3b3d03a82a9a,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.307
-      objectReference: {fileID: 0}
-    - target: {fileID: 4775073867979633936, guid: c89dd51e30f01c84c9bd3b3d03a82a9a,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4775073867979633939, guid: c89dd51e30f01c84c9bd3b3d03a82a9a,
         type: 3}
       propertyPath: m_Name
       value: Chair (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4775073867979633939, guid: c89dd51e30f01c84c9bd3b3d03a82a9a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c89dd51e30f01c84c9bd3b3d03a82a9a, type: 3}
@@ -29608,33 +29606,75 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 419917572905874097, guid: 903a631f04f2be9448e8e5f9eca61f10,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 419917572905874097, guid: 903a631f04f2be9448e8e5f9eca61f10,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 419917572905874097, guid: 903a631f04f2be9448e8e5f9eca61f10,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 419917572905874101, guid: 903a631f04f2be9448e8e5f9eca61f10,
         type: 3}
       propertyPath: m_Name
       value: Table (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 419917572905874103, guid: 903a631f04f2be9448e8e5f9eca61f10,
+    - target: {fileID: 419917572905874101, guid: 903a631f04f2be9448e8e5f9eca61f10,
         type: 3}
-      propertyPath: m_FlipX
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434280582935523160, guid: 903a631f04f2be9448e8e5f9eca61f10,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1741415463, guid: 903a631f04f2be9448e8e5f9eca61f10, type: 3}
+    - {fileID: 419917572905874096, guid: 903a631f04f2be9448e8e5f9eca61f10, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 903a631f04f2be9448e8e5f9eca61f10, type: 3}
+--- !u!1 &1741415462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 419917572905874101, guid: 903a631f04f2be9448e8e5f9eca61f10,
+    type: 3}
+  m_PrefabInstance: {fileID: 1741415461}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1741415463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741415462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee627ac20732ed4da486471975a666e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  size: 3
+  woodPrefab: {fileID: 5390005589211352037, guid: 4ad6b1af2ddd35f4f933bf31321f3c66,
+    type: 3}
+  smokeNumber: 3
+  flameIncrease: 3
+--- !u!61 &1741415464
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741415462}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.64, y: 4.64}
+    newSize: {x: 4.64, y: 4.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.64, y: 4.64}
+  m_EdgeRadius: 0
 --- !u!1 &1746083232
 GameObject:
   m_ObjectHideFlags: 0
@@ -30349,7 +30389,7 @@ PrefabInstance:
     - target: {fileID: 8976344517089468610, guid: b55fb168002e5a644b86c41754056839,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8976344517089468622, guid: b55fb168002e5a644b86c41754056839,
         type: 3}
@@ -30483,7 +30523,7 @@ PrefabInstance:
     - target: {fileID: 9008948391346662145, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9008948391346662266, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
         type: 3}

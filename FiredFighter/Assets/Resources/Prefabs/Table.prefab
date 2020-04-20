@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 419917572905874096}
   - component: {fileID: 419917572905874103}
   - component: {fileID: 4434280582935523160}
+  - component: {fileID: 1741415463}
   m_Layer: 8
   m_Name: Table
   m_TagString: Wall
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 419917572905874101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.27, y: 2.63, z: -5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -125,3 +126,21 @@ EdgeCollider2D:
   - {x: -0.55572367, y: 1.636353}
   - {x: 2.0762138, y: 0.47722077}
   - {x: 0.9594228, y: -0.8483604}
+--- !u!114 &1741415463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419917572905874101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d189b89415be724e83f987b98916c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  size: 3
+  woodPrefab: {fileID: 5390005589211352037, guid: 4ad6b1af2ddd35f4f933bf31321f3c66,
+    type: 3}
+  smokeNumber: 4
+  flameIncrease: 3
