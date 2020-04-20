@@ -7,6 +7,8 @@ public class Holder : MonoBehaviour
 {
     public GameObject item;
     public Tool tool;
+
+    public Vector3 direction;
     
     // Start is called before the first frame update
     void Start()
@@ -18,6 +20,17 @@ public class Holder : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void FixedUpdate()
+    {
+        direction = GetVectorFromAngle(transform.rotation.z).normalized;
+    }
+
+    private static Vector3 GetVectorFromAngle(float angle)
+    {
+        float angleRad = angle * (Mathf.PI / 180f);
+        return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
     }
 
     public void Pickup(GameObject go)
