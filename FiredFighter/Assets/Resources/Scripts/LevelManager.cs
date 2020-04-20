@@ -28,7 +28,13 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         //onFireObjects = new List<GameObject>();
+        InvokeRepeating("BurnHouse", 1, 1);
+        //InvokeRepeating("GrowFire", 10, 10);
+    }
 
+    void BurnHouse()
+    {
+        houseHealth -= Fire.damage;
     }
 
     // Update is called once per frame
