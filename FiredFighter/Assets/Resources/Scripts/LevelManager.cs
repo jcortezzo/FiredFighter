@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlobalValues : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
-    public static GlobalValues Instance;
+    public static LevelManager Instance;
+
+    public float houseHealth = 100;
+    public List<GameObject> onFireObjects;
+    public List<GameObject> onWaterObjects;
 
     // Start is called before the first frame update
     private void Awake()
     {
         if (Instance == null)
         {
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
             Instance = this;
         }
         else
@@ -30,6 +34,6 @@ public class GlobalValues : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }

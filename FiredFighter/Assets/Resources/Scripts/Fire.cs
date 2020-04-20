@@ -8,6 +8,7 @@ public class Fire : MonoBehaviour, IInteractable
 
     public static float damage = 1;
     public static int numFires = 0;
+    public static float totalHealth = 20f;
 
     public static Dictionary<Vector3, Fire> firePositions = new Dictionary<Vector3, Fire>();
     
@@ -33,7 +34,14 @@ public class Fire : MonoBehaviour, IInteractable
         //transform.localScale *= level;
         numFires++;
         splitTimer = splitTime;
-        GlobalValues.Instance.onFireObjects.Add(this.gameObject);
+        LevelManager.Instance.onFireObjects.Add(this.gameObject);
+
+        InvokeRepeating("BurnHouse", 1, 1);
+    }
+
+    void BurnHouse()
+    {
+        LevelManager.Instance.houseHealth -= damage;
     }
 
     // Update is called once per frame
@@ -78,7 +86,7 @@ public class Fire : MonoBehaviour, IInteractable
             if (firePositions.ContainsKey(position)) continue;
             fires[i] = Instantiate(this, position, Quaternion.identity);
             fires[i].level = level;
-            GlobalValues.Instance.onFireObjects.Add(fires[i].gameObject);
+            LevelManager.Instance.onFireObjects.Add(fires[i].gameObject);
         }
 
         // count the number of fires that were
@@ -121,6 +129,7 @@ public class Fire : MonoBehaviour, IInteractable
     public void Extinguish(int damage)
     {
         level -= damage;
+        totalHealth -= damage;
     }
     private void BurnWood(IFlammable flammable)
     {
@@ -141,7 +150,7 @@ public class Fire : MonoBehaviour, IInteractable
 
     private void CreateSmoke(IFlammable flammable)
     {
-        Debug.Log("smoke!");
+        //Debug.Log("smoke!");
         for (int i = 0; i < flammable.SmokeNumber(); i++)
         {
             Smoke smoke = Instantiate(smokepf, transform.position, Quaternion.identity).GetComponent<Smoke>();

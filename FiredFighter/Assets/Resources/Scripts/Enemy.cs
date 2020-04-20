@@ -186,7 +186,7 @@ public abstract class Enemy : LivingEntity
 
     private GameObject GetClosestFire()
     {
-        List<GameObject> list = GlobalValues.Instance.onFireObjects;
+        List<GameObject> list = LevelManager.Instance.onFireObjects;
         GameObject closest = null;
         float minDis = float.MaxValue;
         foreach (GameObject go in list)
@@ -208,7 +208,7 @@ public abstract class Enemy : LivingEntity
 
     private GameObject GetClosestWaterSource()
     {
-        List<GameObject> list = GlobalValues.Instance.onWaterObjects;
+        List<GameObject> list = LevelManager.Instance.onWaterObjects;
         GameObject closest = null;
         float minDis = float.MaxValue;
         foreach (GameObject go in list)
