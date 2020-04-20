@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -11,6 +9,8 @@ public class LevelManager : MonoBehaviour
     public float houseHealth = 100;
     public List<GameObject> onFireObjects;
     public List<GameObject> onWaterObjects;
+    bool aflame = false;
+    [SerializeField] private Transform winFirepf;
 
     // Start is called before the first frame update
     private void Awake()
@@ -42,22 +42,18 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(houseHealth <= 0)
+        if (houseHealth <= 0 && !aflame)
         {
-            Win();
+            for (int i = 0; i < 50; i++)
+            {
+                float a = Random.Range(0f, 1f) * 2 * Mathf.PI;
+                float r = 50 * Mathf.Sqrt(Random.Range(0f, 1f));
+                float x = r * Mathf.Cos(a);
+                float y = r * Mathf.Sin(a);
+                WinFire winFire = Instantiate(winFirepf, new Vector3(x, y, transform.position.z), Quaternion.identity).GetComponent<WinFire>();
+                //smoke.GetComponent<Rigidbody2D>().velocity = Random.insideUnitCircle.normalized * 0.5f;
+            }
+            aflame = true;
         }
-        
     }
-
-    private void Win()
-    {
-        
-    }
-
-    public void Lose()
-    {
-        SceneManager.LoadScene("Lose");
-    }
-
-
 }
