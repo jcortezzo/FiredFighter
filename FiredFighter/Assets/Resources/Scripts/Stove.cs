@@ -50,4 +50,6 @@ public class Stove : MonoBehaviour, IInteractable
         }
        
     }
+
+
 }

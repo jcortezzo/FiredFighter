@@ -23,8 +23,13 @@ public class Fire : MonoBehaviour, IInteractable
     [SerializeField] private Transform smokepf;
     //[SerializeField] private Smoke smoke;
 
-    
+
     // Start is called before the first frame update
+    private void Awake()
+    {
+        animator = this.GetComponent<Animator>();
+    }
+
     void Start()
     {
         if (firePositions.ContainsKey(transform.position))
@@ -138,9 +143,10 @@ public class Fire : MonoBehaviour, IInteractable
     }
 
     public void Interact(Player player)
-    {
+    { 
+        if(player.holder.item == null) return;
         IFlammable wood = player.holder.item.GetComponent<IFlammable>();
-        if ( wood != null)
+        if (wood != null)
         {
             Debug.Log("Bigger fire!!");
             BurnWood(wood);

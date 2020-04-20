@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : LivingEntity
 {
@@ -14,7 +15,7 @@ public class Player : LivingEntity
     private float hiddenTimer = 0f;
 
     private IInteractable interactable;
-    
+    public RectTransform panel;
     protected override void Start()
     {
         base.Start();
@@ -94,18 +95,16 @@ public class Player : LivingEntity
         //        weaponHolder.primary != null && !weaponHolder.primary.attacking;
     }
 
-    //public override void OnCollisionStay2D(Collision2D collision)
-    //{
-    //    base.OnCollisionStay2D(collision);
-    //    if(collision.gameObject.tag == "Item")
-    //    {
-    //        if(Input.GetKeyDown(KeyCode.E))
-    //        {
-    //            IInteractable interact = collision.gameObject.GetComponent<IInteractable>();
-    //            interact.Interact(this);
-    //        }
-    //    }    
-    //}
+    public override void OnCollisionStay2D(Collision2D collision)
+    {
+        base.OnCollisionStay2D(collision);
+        IInteractable i = collision.gameObject.GetComponent<IInteractable>();
+        if (i != null)
+        {
+            panel.transform.position = Camera.main.WorldToScreenPoint(collision.gameObject.transform.position);
+            interactable = i;
+        }
+    }
 
     public override void OnCollisionEnter2D(Collision2D collision)
     {
@@ -113,6 +112,7 @@ public class Player : LivingEntity
         IInteractable i = collision.gameObject.GetComponent<IInteractable>();
         if (i != null)
         {
+            panel.transform.position = Camera.main.WorldToScreenPoint(collision.gameObject.transform.position);
             interactable = i;
         }
     }
@@ -123,6 +123,7 @@ public class Player : LivingEntity
         IInteractable i = collision.gameObject.GetComponent<IInteractable>();
         if (i == interactable)
         {
+            panel.transform.position = new Vector3(1000, 1000, 1000);
             interactable = null;
         }
     }
@@ -132,6 +133,7 @@ public class Player : LivingEntity
         IInteractable i = collision.gameObject.GetComponent<IInteractable>();
         if (i != null)
         {
+            //panel.transform.position = Camera.main.WorldToScreenPoint(collision.gameObject.transform.position);
             interactable = i;
         }
     }
@@ -141,6 +143,7 @@ public class Player : LivingEntity
         IInteractable i = collision.gameObject.GetComponent<IInteractable>();
         if (i == interactable)
         {
+            //panel.transform.position = new Vector3(1000, 1000, 1000);
             interactable = null;
         }
     }
@@ -151,6 +154,12 @@ public class Player : LivingEntity
         {
             Hide();
         }
+        //IInteractable i = collision.gameObject.GetComponent<IInteractable>();
+        //if (i == interactable)
+        //{
+        //    panel.transform.position = Camera.main.WorldToScreenPoint(collision.gameObject.transform.position);
+        //    interactable = null;
+        //}
     }
 
     private void Hide()
