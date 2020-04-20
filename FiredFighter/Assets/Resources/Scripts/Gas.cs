@@ -19,6 +19,8 @@ public class Gas : MonoBehaviour, IFlammable
         return 2;
     }
 
+    public float elapsedTime;
+    public float maxTime = 5f; 
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,12 @@ public class Gas : MonoBehaviour, IFlammable
     // Update is called once per frame
     void Update()
     {
-        
+        if(elapsedTime < maxTime)
+        {
+            elapsedTime += Time.deltaTime;
+        } else
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
