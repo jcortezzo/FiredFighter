@@ -26,6 +26,22 @@ public class UILevelHealth : MonoBehaviour
     {
         percentage = (healthMax - level.houseHealth) / healthMax;
         healthImage.fillAmount = percentage;
+        DisplayText();
+    }
+
+    void DisplayText()
+    {
+        for(int i = 0; i < commentPairs.Length; i++)
+        {
+            if(percentage >= commentPairs[i].percent / 100f)
+            {
+                text.text = commentPairs[i].text;
+                
+            } else
+            {
+                break;
+            }
+        }
     }
 }
 
