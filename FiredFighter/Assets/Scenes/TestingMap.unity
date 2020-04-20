@@ -15612,6 +15612,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9008948391346662266, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
         type: 3}
+      propertyPath: commentPairs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008948391346662266, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+        type: 3}
       propertyPath: healthImage
       value: 
       objectReference: {fileID: 1007026110}
@@ -15620,6 +15625,51 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 675244283}
+    - target: {fileID: 9008948391346662266, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+        type: 3}
+      propertyPath: commentPairs.Array.data[0].text
+      value: Your mom
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008948391346662266, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+        type: 3}
+      propertyPath: commentPairs.Array.data[1].text
+      value: ' BURN BIATCH BURN'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008948391346662266, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+        type: 3}
+      propertyPath: commentPairs.Array.data[1].percent
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008948391346662266, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+        type: 3}
+      propertyPath: commentPairs.Array.data[2].text
+      value: MUHHAHHAH
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008948391346662266, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+        type: 3}
+      propertyPath: commentPairs.Array.data[2].percent
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008948391346662266, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+        type: 3}
+      propertyPath: commentPairs.Array.data[3].text
+      value: BETTER RUNN
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008948391346662266, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+        type: 3}
+      propertyPath: commentPairs.Array.data[3].percent
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008948391346662266, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+        type: 3}
+      propertyPath: commentPairs.Array.data[4].text
+      value: KABOOM
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008948391346662266, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+        type: 3}
+      propertyPath: commentPairs.Array.data[4].percent
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 9008948391346662269, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
         type: 3}
       propertyPath: m_LocalPosition.x
