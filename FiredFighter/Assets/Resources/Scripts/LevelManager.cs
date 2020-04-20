@@ -64,6 +64,14 @@ public class LevelManager : MonoBehaviour
             aflame = true;
         }
         
+        if (fireStarted && Fire.totalHealth <= 0)
+        {
+            for (int i = 0; i < onFireObjects.Count; i++)
+            {
+                Destroy(onFireObjects[i]);
+            }
+        }
+
         if(houseHealth <= 0)
         {
             timeElapse += Time.deltaTime;
