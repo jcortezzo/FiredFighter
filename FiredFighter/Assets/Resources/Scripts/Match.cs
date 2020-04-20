@@ -26,7 +26,7 @@ public class Match : Tool, IInteractable
             //RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, SHOOT_DISTANCE);
             //Vector3 firePos = hit.collider != null ? transform.TransformPoint(hit.collider.transform.position) : transform.position + direction * SHOOT_DISTANCE;
             Vector3 firePos = transform.position + direction * SHOOT_DISTANCE;
-            Fire f = Instantiate(firepf, firePos, Quaternion.identity).GetComponent<Fire>();
+            Fire f = Instantiate(firepf, new Vector3(firePos.x, firePos.y, -1), Quaternion.identity).GetComponent<Fire>();
             f.SetDamage(Fire.damage + 1);
             charges--;
             return;
