@@ -12,7 +12,7 @@ public abstract class Tool : MonoBehaviour
     protected Holder holder;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         holder = GetComponentInParent<Holder>();
         if(holder != null) holder.tool = this;
