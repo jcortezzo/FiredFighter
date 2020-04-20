@@ -95,57 +95,35 @@ public class Player : LivingEntity
         //        weaponHolder.primary != null && !weaponHolder.primary.attacking;
     }
 
-    public override void OnCollisionStay2D(Collision2D collision)
-    {
-        base.OnCollisionStay2D(collision);
-        IInteractable i = collision.gameObject.GetComponent<IInteractable>();
-        if (i != null)
-        {
-            panel.transform.position = Camera.main.WorldToScreenPoint(collision.gameObject.transform.position);
-            interactable = i;
-        }
-    }
+
 
     public override void OnCollisionEnter2D(Collision2D collision)
     {
         base.OnCollisionEnter2D(collision);
-        IInteractable i = collision.gameObject.GetComponent<IInteractable>();
-        if (i != null)
-        {
-            panel.transform.position = Camera.main.WorldToScreenPoint(collision.gameObject.transform.position);
-            interactable = i;
-        }
+        QueueUpCollisionInteractable(collision);
+    }
+
+    public override void OnCollisionStay2D(Collision2D collision)
+    {
+        base.OnCollisionStay2D(collision);
+        QueueUpCollisionInteractable(collision);
     }
 
     public override void OnCollisionExit2D(Collision2D collision)
     {
         base.OnCollisionExit2D(collision);
-        IInteractable i = collision.gameObject.GetComponent<IInteractable>();
-        if (i == interactable)
-        {
-            panel.transform.position = new Vector3(1000, 1000, 1000);
-            interactable = null;
-        }
+        RemoveCollisionInteractable(collision);
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IInteractable i = collision.gameObject.GetComponent<IInteractable>();
-        if (i != null)
-        {
-            //panel.transform.position = Camera.main.WorldToScreenPoint(collision.gameObject.transform.position);
-            interactable = i;
-        }
+        QueueUpColliderInteractable(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        IInteractable i = collision.gameObject.GetComponent<IInteractable>();
-        if (i == interactable)
-        {
-            //panel.transform.position = new Vector3(1000, 1000, 1000);
-            interactable = null;
-        }
+        RemoveColliderInteractable(collision);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -154,12 +132,61 @@ public class Player : LivingEntity
         {
             Hide();
         }
-        //IInteractable i = collision.gameObject.GetComponent<IInteractable>();
-        //if (i == interactable)
-        //{
-        //    panel.transform.position = Camera.main.WorldToScreenPoint(collision.gameObject.transform.position);
-        //    interactable = null;
-        //}
+        QueueUpColliderInteractable(collision);
+    }
+
+    private void QueueUpCollisionInteractable(Collision2D collision)
+    {
+        IInteractable i = collision.gameObject.GetComponent<IInteractable>();
+        if (i != null)
+        {
+            if (i.ShowPrompt())
+            {
+                panel.transform.position = Camera.main.WorldToScreenPoint(collision.gameObject.transform.position);
+            }
+            interactable = i;
+        }
+    }
+
+    private void RemoveCollisionInteractable(Collision2D collision)
+    {
+        IInteractable i = collision.gameObject.GetComponent<IInteractable>();
+        if (i == interactable)
+        {
+            panel.transform.position = new Vector3(1000, 1000, 1000);
+            interactable = null;
+        }
+        if (i != null)
+        {
+            panel.transform.position = new Vector3(1000, 1000, 1000);
+        }
+    }
+
+    private void QueueUpColliderInteractable(Collider2D collision)
+    {
+        IInteractable i = collision.gameObject.GetComponent<IInteractable>();
+        if (i != null)
+        {
+            if (i.ShowPrompt())
+            {
+                panel.transform.position = Camera.main.WorldToScreenPoint(collision.gameObject.transform.position);
+            }
+            interactable = i;
+        }
+    }
+
+    private void RemoveColliderInteractable(Collider2D collision)
+    {
+        IInteractable i = collision.gameObject.GetComponent<IInteractable>();
+        if (i == interactable)
+        {
+            panel.transform.position = new Vector3(1000, 1000, 1000);
+            interactable = null;
+        }
+        if (i != null)
+        {
+            panel.transform.position = new Vector3(1000, 1000, 1000);
+        }
     }
 
     private void Hide()

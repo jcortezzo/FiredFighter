@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IInteractable
 {
     void Interact(Player player);
+    bool ShowPrompt();
 }

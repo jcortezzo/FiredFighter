@@ -185,6 +185,11 @@ public class Fire : MonoBehaviour, IInteractable
         }
     }
 
+    public bool ShowPrompt()
+    {
+        return false;
+    }
+
     protected enum Directions {
         UP,
         DOWN,

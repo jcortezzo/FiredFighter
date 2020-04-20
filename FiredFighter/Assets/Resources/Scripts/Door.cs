@@ -54,4 +54,9 @@ public class Door : MonoBehaviour, IInteractable
         }
         anim.SetBool("open", open);
     }
+
+    public bool ShowPrompt()
+    {
+        return true;
+    }
 }

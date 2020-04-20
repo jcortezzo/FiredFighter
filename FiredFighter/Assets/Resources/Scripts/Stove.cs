@@ -51,5 +51,8 @@ public class Stove : MonoBehaviour, IInteractable
        
     }
 
-
+    public bool ShowPrompt()
+    {
+        return true;
+    }
 }

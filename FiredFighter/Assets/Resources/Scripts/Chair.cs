@@ -25,4 +25,8 @@ public class Chair : Breakable, IInteractable, IFlammable
         player.holder.Pickup(this.gameObject);
     }
 
+    public bool ShowPrompt()
+    {
+        return true;
+    }
 }

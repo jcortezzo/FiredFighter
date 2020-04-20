@@ -41,4 +41,9 @@ public class Match : Tool, IInteractable
     {
         player.holder.PickupTool(this);
     }
+
+    public bool ShowPrompt()
+    {
+        return true;
+    }
 }

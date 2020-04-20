@@ -24,4 +24,9 @@ public class Wood : MonoBehaviour, IInteractable, IFlammable
     {
         return 1;
     }
+
+    public bool ShowPrompt()
+    {
+        return true;
+    }
 }
