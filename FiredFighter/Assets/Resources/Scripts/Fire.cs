@@ -6,7 +6,7 @@ public class Fire : MonoBehaviour, IInteractable
 {
     public int level = 1;
 
-    public static float damage = 1;
+    public static float damage = 0;
     public static int numFires = 0;
     public static float totalHealth = 20f;
 
@@ -36,31 +36,43 @@ public class Fire : MonoBehaviour, IInteractable
         splitTimer = splitTime;
         LevelManager.Instance.onFireObjects.Add(this.gameObject);
 
-        InvokeRepeating("BurnHouse", 1, 1);
+        
+        InvokeRepeating("GrowFire", 10, 10);
     }
 
-    void BurnHouse()
+    public void SetDamage(float f)
     {
-        LevelManager.Instance.houseHealth -= damage;
+        damage = f;
+    }
+
+    private void wtf(string hngg)
+    {
+        //Debug.Log(hngg);
+        
+        foreach (KeyValuePair<Vector3, Fire> kvp in firePositions)
+        {
+            hngg += "{" + kvp.Key + ":, " + kvp.Value + "},";
+        }
+        Debug.Log(hngg);
+    }
+
+    void GrowFire()
+    {
+        wtf("before: ");
+        int n = Split();
+        wtf("after: ");
+        level = Mathf.Min(level + 1, MAX_LEVEL);
+        if (n > 0) damage += 1.0f / n;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (splitTimer > 0)
+        if (level <= 0)
         {
-            splitTimer -= Time.deltaTime;
+            firePositions.Remove(transform.position);
+            Destroy(this.gameObject);
         }
-        else
-        {
-            int n = Split();
-            level = Mathf.Min(level + 1, MAX_LEVEL);
-            //transform.localScale *= level;
-            if (n > 0) damage++;
-            splitTimer = splitTime;
-        }
-
-        if (level <= 0) Destroy(this.gameObject);
     }
 
     protected int Split()
@@ -83,7 +95,10 @@ public class Fire : MonoBehaviour, IInteractable
         for (int i = 0; i < fires.Length; i++)
         {
             Vector3 position = transform.position + positions[i];
-            if (firePositions.ContainsKey(position)) continue;
+            if (firePositions.ContainsKey(position))
+            {
+                continue;
+            }
             fires[i] = Instantiate(this, position, Quaternion.identity);
             fires[i].level = level;
             LevelManager.Instance.onFireObjects.Add(fires[i].gameObject);
@@ -103,6 +118,7 @@ public class Fire : MonoBehaviour, IInteractable
     {
         if(collision.gameObject.tag == "Wall")
         {
+            firePositions.Remove(transform.position);
             Destroy(this.gameObject);
         } else if(collision.gameObject.GetComponent<IFlammable>() != null)
         {
@@ -114,6 +130,7 @@ public class Fire : MonoBehaviour, IInteractable
     private void OnDestroy()
     {
         //firePositions.Remove(transform.position);
+        LevelManager.Instance.onFireObjects.Remove(gameObject);
     }
 
     public void Interact(Player player)

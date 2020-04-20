@@ -132,7 +132,7 @@ public abstract class Enemy : LivingEntity
             detectPlayer = true;
             fov.SetColor(Color.red);
             fov.SetColorAlpha(.5f);
-            Debug.Log("detected!");
+            //Debug.Log("detected!");
         } else if (followTimeElapsed > 0)
         {
             float time = Time.deltaTime;
@@ -337,7 +337,7 @@ public abstract class Enemy : LivingEntity
         base.OnCollisionStay2D(collision);
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("touching player");
+            //Debug.Log("touching player");
         }
     }
 }
