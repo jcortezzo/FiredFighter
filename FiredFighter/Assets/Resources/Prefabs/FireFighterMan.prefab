@@ -142,9 +142,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionCoolDown: 0
-  maxCoolDown: 0.1
+  maxCoolDown: 0.25
   action: 0
+  water: 1
   fire: {fileID: 0}
+  waterSource: {fileID: 0}
 --- !u!61 &800646263
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -158,7 +160,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.11435741, y: 0}
+  m_Offset: {x: 0.11435747, y: 0.16403067}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -169,7 +171,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.4049578, y: 2}
+  m_Size: {x: 3.4049578, y: 3.4762275}
   m_EdgeRadius: 0
 --- !u!1 &2129560913226825480
 GameObject:
@@ -391,6 +393,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580189132872860759, guid: f836cda9f6909de4f88af472d25f65a3,
+        type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 3328
       objectReference: {fileID: 0}
     - target: {fileID: 2580189132872860759, guid: f836cda9f6909de4f88af472d25f65a3,
         type: 3}

@@ -130,6 +130,8 @@ public abstract class Enemy : LivingEntity
             followTimeElapsed = followTimeMax;
             target = player.gameObject;
             detectPlayer = true;
+            fov.SetColor(Color.red);
+            fov.SetColorAlpha(.5f);
             Debug.Log("detected!");
         } else if (followTimeElapsed > 0)
         {
@@ -139,8 +141,12 @@ public abstract class Enemy : LivingEntity
             {
                 followTimeElapsed -= time;
             }
+            fov.SetColor(Color.white);
+            fov.SetColorAlpha(.5f);
         } else
         {
+            fov.SetColor(Color.white);
+            fov.SetColorAlpha(.5f);
             detectPlayer = false;
             target = null;
             if (HasBucket()) {

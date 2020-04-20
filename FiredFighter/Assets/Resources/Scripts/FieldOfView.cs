@@ -15,13 +15,14 @@ public class FieldOfView : MonoBehaviour
     private Vector3 direction = Vector3.zero;
     private float startingAngle = 0f;
     private GameObject target;
+    MeshRenderer mr;
     Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
         mesh = new Mesh();
-        MeshRenderer mr = GetComponent<MeshRenderer>();
+        mr = GetComponent<MeshRenderer>();
         mr.material.SetColor("_TintColor", Color.yellow);
         GetComponent<MeshFilter>().mesh = mesh;
         rb = GetComponent<Rigidbody2D>();
@@ -124,6 +125,17 @@ public class FieldOfView : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void SetColor(Color color)
+    {
+        mr.sharedMaterial.SetColor("_Color",color);
+    }
+
+    public void SetColorAlpha(float a)
+    {
+        Color c = mr.sharedMaterial.color;
+        mr.sharedMaterial.SetColor("_Color", new Color(c.r, c.g, c.b, a));
     }
 
     public void SetOrigin(Vector3 origin)
