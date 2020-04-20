@@ -6,16 +6,21 @@ public class Door : MonoBehaviour, IInteractable
 {
     private BoxCollider2D bc2d;
     private bool open = false;
+    [SerializeField] private bool F;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         bc2d = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
+        anim.SetBool("F", F);
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         
     }
 
@@ -47,5 +52,6 @@ public class Door : MonoBehaviour, IInteractable
         {
             Close();
         }
+        anim.SetBool("open", open);
     }
 }
