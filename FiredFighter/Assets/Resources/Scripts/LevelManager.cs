@@ -34,6 +34,7 @@ public class LevelManager : MonoBehaviour
     {
         //onFireObjects = new List<GameObject>();
         InvokeRepeating("BurnHouse", 1, 1);
+        Jukebox.Instance.PlaySound(0);
         //InvokeRepeating("GrowFire", 10, 10);
     }
 
@@ -61,6 +62,7 @@ public class LevelManager : MonoBehaviour
                 WinFire winFire = Instantiate(winFirepf, new Vector3(x, y, transform.position.z), Quaternion.identity).GetComponent<WinFire>();
                 //smoke.GetComponent<Rigidbody2D>().velocity = Random.insideUnitCircle.normalized * 0.5f;
             }
+            Jukebox.Instance.PlaySound(1);
             aflame = true;
         }
         
