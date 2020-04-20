@@ -40,6 +40,7 @@ public class LevelManager : MonoBehaviour
 
     void BurnHouse()
     {
+        if (!fireStarted) return;
         houseHealth -= Fire.damage;
     }
 
@@ -87,12 +88,16 @@ public class LevelManager : MonoBehaviour
     public void NextLevel()
     {
         Fire.damage = 0;
+        Fire.totalHealth = 20;
+        Fire.numFires = 0;
         GameSceneManager.Instance.LoadNextLevel();
     }
 
     public void Lose()
     {
         Fire.damage = 0;
+        Fire.numFires = 0;
+        Fire.totalHealth = 20;
         SceneManager.LoadScene("Lose");
     }
 }
