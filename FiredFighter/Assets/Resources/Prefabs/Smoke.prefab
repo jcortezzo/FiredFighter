@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2402064418071369090}
   - component: {fileID: 2402064418071369089}
   - component: {fileID: 2402064418071369088}
-  - component: {fileID: 2402064418071369103}
+  - component: {fileID: 880565002}
+  - component: {fileID: 880565001}
   m_Layer: 0
   m_Name: Smoke
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2402064418071369102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.88, y: 1.17, z: -2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.46422, y: 0.46422, z: 0.46422}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8566918265334741760, guid: e201ddf00edd9ad46a1f79bd2db47b18,
+  m_Sprite: {fileID: 8691784570158571213, guid: 2fb2cfc12c9f5094a8adfe8f9eec7e02,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -118,7 +119,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &2402064418071369103
+--- !u!58 &880565002
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,6 +132,25 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.111149535, y: 0.42236793}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.1662018
+--- !u!95 &880565001
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2402064418071369102}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 50ccfcda20621c341a53f4b5a12749fc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
