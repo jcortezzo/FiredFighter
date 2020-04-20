@@ -63,6 +63,7 @@ public abstract class LivingEntity : MonoBehaviour
     {
         if (IsAttacking())
         {
+            Debug.Log("attack ??");
             //if (/*weaponHolder.primary.IsCD() ||*/ weaponHolder.primary.attacking) return;
             //if (!weaponHolder.primary.IsCD()) weaponHolder.primary.Attack();
             //if (weaponHolder.primary.melee) // problematic, will swing even when you're on cooldown
@@ -78,10 +79,11 @@ public abstract class LivingEntity : MonoBehaviour
             {
                 holder.tool.Action();
                 holder.tool.action = true;
-                //Debug.Log("action");
+                Debug.Log("action");
             }
             else
             {
+                Debug.Log("No holder");
                 if (currBreak != null)
                 {
                     currBreak.TakeHit(1, 1);

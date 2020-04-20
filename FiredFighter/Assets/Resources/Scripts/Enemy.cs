@@ -70,13 +70,18 @@ public abstract class Enemy : LivingEntity
 
         return m * x + b;
     }
+    public override void Awake()
+    {
+        base.Awake();
+        
+    }
     protected override void Start()
     {
         base.Start();
 
         // Scaling damage for version 5
 
-
+        player = LevelManager.Instance.player;
         //player = LevelManager.Instance.player;
         //alignment = Alignment.FOE;
         targets = new HashSet<GameObject>();
@@ -314,8 +319,10 @@ public abstract class Enemy : LivingEntity
         //if (attackTimer > 0) return false;
         //attackTimer = attackSpeed;
         if (target == null) return false;
-        float distance = Vector3.Distance(target.transform.position, this.transform.position);
-        return distance < attackingDistance && !IsFriendTargetingPlayer();
+        float distance = Vector2.Distance(target.transform.position, this.transform.position);
+        Debug.Log("this pos " + this.transform.position + " target pos: " + target.transform.position);
+        Debug.Log("distance : " + distance);
+        return distance < attackingDistance;// && !IsFriendTargetingPlayer();
     }
 
     public void SetTarget(GameObject go)

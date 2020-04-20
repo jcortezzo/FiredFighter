@@ -112,7 +112,7 @@ public class FieldOfView : MonoBehaviour
     {
         //Vector3 adjustedOrigin = transform.TransformPoint(origin);
         Vector3 adjPos = transform.InverseTransformPoint(go.transform.position);
-        if (Vector3.Distance(origin, adjPos) < viewDistance + 2)
+        if (Vector2.Distance(origin, adjPos) < viewDistance)
         {
             //Debug.Log("Within distance");
             Vector3 dir = (adjPos - origin).normalized;

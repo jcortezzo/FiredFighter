@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
-
+    public Player player;
     public float houseHealth = 100;
     public List<GameObject> onFireObjects;
     public List<GameObject> onWaterObjects;

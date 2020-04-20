@@ -55,7 +55,7 @@ public class Fire : MonoBehaviour, IInteractable
         {
             hngg += "{" + kvp.Key + ":, " + kvp.Value + "},";
         }
-        Debug.Log(hngg);
+        //Debug.Log(hngg);
     }
 
     void GrowFire()
@@ -74,6 +74,7 @@ public class Fire : MonoBehaviour, IInteractable
         {
             firePositions.Remove(transform.position);
             Destroy(this.gameObject);
+            return;
         }
         animator.SetInteger("level", level);
     }
