@@ -313,8 +313,9 @@ public abstract class Enemy : LivingEntity
         //return alignment == Alignment.FRIEND && target == player;
     }
 
-    public virtual void OnCollisionEnter2D(Collision2D collision)
+    public override void OnCollisionEnter2D(Collision2D collision)
     {
+        base.OnCollisionEnter2D(collision);
         Door d = collision.gameObject.GetComponent<Door>();
         if (d != null && !d.IsOpen())
         {

@@ -109,8 +109,9 @@ public class Player : LivingEntity
     //    }    
     //}
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public override void OnCollisionEnter2D(Collision2D collision)
     {
+        base.OnCollisionEnter2D(collision);
         IInteractable i = collision.gameObject.GetComponent<IInteractable>();
         if (i != null)
         {
@@ -118,8 +119,9 @@ public class Player : LivingEntity
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    public override void OnCollisionExit2D(Collision2D collision)
     {
+        base.OnCollisionExit2D(collision);
         IInteractable i = collision.gameObject.GetComponent<IInteractable>();
         if (i == interactable)
         {

@@ -18,6 +18,8 @@ public abstract class LivingEntity : MonoBehaviour
 
     public float hitstun;
 
+    private Breakable currBreak;
+
     //public Alignment alignment = Alignment.NEUTRAL;
 
     public virtual void Awake()
@@ -77,6 +79,13 @@ public abstract class LivingEntity : MonoBehaviour
                 holder.tool.Action();
                 holder.tool.action = true;
             }
+            else
+            {
+                if (currBreak != null)
+                {
+                    currBreak.TakeHit(1, 1);
+                }
+            }
         }
     }
 
@@ -86,11 +95,40 @@ public abstract class LivingEntity : MonoBehaviour
         Breakable breakable = collision.gameObject.GetComponent<Breakable>();
         if (breakable != null)
         {
-            if (IsAttacking())
-            {
-                Debug.Log("break u ding");
-                breakable.TakeHit(1, 1);
-            }
+            //if (IsAttacking())
+            //{
+            //    Debug.Log("break u ding");
+            //    breakable.TakeHit(1, 1);
+            //}
+            currBreak = breakable;
+        }
+    }
+
+    public virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        Breakable breakable = collision.gameObject.GetComponent<Breakable>();
+        if (breakable != null)
+        {
+            //if (IsAttacking())
+            //{
+            //    Debug.Log("break u ding");
+            //    breakable.TakeHit(1, 1);
+            //}
+            currBreak = breakable;
+        }
+    }
+
+    public virtual void OnCollisionExit2D(Collision2D collision)
+    {
+        Breakable breakable = collision.gameObject.GetComponent<Breakable>();
+        if (breakable != null)
+        {
+            //if (IsAttacking())
+            //{
+            //    Debug.Log("break u ding");
+            //    breakable.TakeHit(1, 1);
+            //}
+            currBreak = null;
         }
     }
 
