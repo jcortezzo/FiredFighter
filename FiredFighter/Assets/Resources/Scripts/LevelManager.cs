@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class LevelManager : MonoBehaviour
     public List<GameObject> onWaterObjects;
     bool aflame = false;
     [SerializeField] private Transform winFirepf;
-
+    public float timeElapse;
+    public float timeMax = 10f;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -55,5 +57,23 @@ public class LevelManager : MonoBehaviour
             }
             aflame = true;
         }
+        
+        if(houseHealth <= 0)
+        {
+            timeElapse += Time.deltaTime;
+        }
+        if(timeElapse >= timeMax)
+        {
+            NextLevel();
+        }
+    }
+
+    public void NextLevel()
+    {
+
+    }
+    public void Lose()
+    {
+        SceneManager.LoadScene("Lose");
     }
 }
