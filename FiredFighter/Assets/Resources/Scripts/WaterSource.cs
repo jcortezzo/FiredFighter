@@ -8,7 +8,7 @@ public class WaterSource : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GlobalValues.Instance.onWaterObjects.Add(gameObject);
+        LevelManager.Instance.onWaterObjects.Add(gameObject);
     }
 
     // Update is called once per frame

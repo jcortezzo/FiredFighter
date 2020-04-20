@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 146043163}
   - component: {fileID: 146043164}
   m_Layer: 0
-  m_Name: GlobalValues
+  m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1fd3eff5ae394444a303b79f38d70fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseHealth: 100
   onFireObjects: []
   onWaterObjects: []
 --- !u!1001 &272063741
@@ -12229,6 +12230,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93b944c2f42f904eab2f8c9badef24d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &675244283 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9008948392931152197, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+    type: 3}
+  m_PrefabInstance: {fileID: 9008948392256321982}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &801909297
 GameObject:
   m_ObjectHideFlags: 0
@@ -12412,6 +12425,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c92e03b3a04af44c9d4cfd663dad002, type: 3}
+--- !u!114 &1007026110 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9008948392726251008, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+    type: 3}
+  m_PrefabInstance: {fileID: 9008948392256321982}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1071452818
 GameObject:
   m_ObjectHideFlags: 0
@@ -15585,6 +15610,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingHealthCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 9008948391346662266, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+        type: 3}
+      propertyPath: healthImage
+      value: 
+      objectReference: {fileID: 1007026110}
+    - target: {fileID: 9008948391346662266, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 675244283}
     - target: {fileID: 9008948391346662269, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15689,6 +15724,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008948392726251008, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+        type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008948392726251008, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+        type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008948392726251008, guid: 91e5a81ebcc9ebb47924bd631a2ee93b,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91e5a81ebcc9ebb47924bd631a2ee93b, type: 3}

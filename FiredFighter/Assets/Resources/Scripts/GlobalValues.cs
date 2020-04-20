@@ -6,9 +6,6 @@ public class GlobalValues : MonoBehaviour
 {
     public static GlobalValues Instance;
 
-    public List<GameObject> onFireObjects;
-    public List<GameObject> onWaterObjects;
-
     // Start is called before the first frame update
     private void Awake()
     {
@@ -33,6 +30,6 @@ public class GlobalValues : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
