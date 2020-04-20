@@ -8,7 +8,14 @@ public class Bucket : Tool
     public const int WATER_MAX = 3;
     public Fire fire;
     public WaterSource waterSource;
-    
+    private Animator anim;
+
+
+    protected override void Start()
+    {
+        anim = GetComponent<Animator>();
+        anim.SetFloat("water", water);
+    }
 
     public override void Action()
     {
@@ -25,6 +32,7 @@ public class Bucket : Tool
                 water = Mathf.Min(water + 1, WATER_MAX);
                 Debug.Log("get water");
             }
+            anim.SetFloat("water", water);
             return;
         }
         else
