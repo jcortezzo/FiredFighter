@@ -128,6 +128,7 @@ public class Fire : MonoBehaviour, IInteractable
         if(collision.gameObject.tag == "Wall")
         {
             firePositions.Remove(transform.position);
+            damage--;
             Destroy(this.gameObject);
         } else if(collision.gameObject.GetComponent<IFlammable>() != null)
         {

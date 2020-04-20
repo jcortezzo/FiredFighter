@@ -40,6 +40,7 @@ public class Holder : MonoBehaviour
         go.transform.parent = this.transform;
         go.transform.localPosition = new Vector3(1f, 0, transform.position.z);
         go.GetComponent<Collider2D>().enabled = false;
+        AstarPath.active.Scan();
     }
 
     public void PickupTool(Tool gameObject)
@@ -64,6 +65,7 @@ public class Holder : MonoBehaviour
             item.transform.rotation = Quaternion.identity;
             item.transform.position = new Vector3(item.transform.position.x, item.transform.position.y, -1);
             item.GetComponent<Collider2D>().enabled = true;
+            AstarPath.active.Scan();
         }
     }
 }

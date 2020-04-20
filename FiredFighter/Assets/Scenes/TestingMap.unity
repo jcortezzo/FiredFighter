@@ -168,6 +168,9 @@ MonoBehaviour:
   houseHealth: 100
   onFireObjects: []
   onWaterObjects: []
+  winFirepf: {fileID: 0}
+  timeElapse: 0
+  timeMax: 10
 --- !u!1 &160167474
 GameObject:
   m_ObjectHideFlags: 0

@@ -70,10 +70,13 @@ public class LevelManager : MonoBehaviour
 
     public void NextLevel()
     {
-
+        Fire.damage = 0;
+        GameSceneManager.Instance.LoadNextLevel();
     }
+
     public void Lose()
     {
+        Fire.damage = 0;
         SceneManager.LoadScene("Lose");
     }
 }
