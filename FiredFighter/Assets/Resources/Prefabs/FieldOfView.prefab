@@ -52,8 +52,8 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 1792
-  fov: 60
-  viewDistance: 1
+  fov: 45
+  viewDistance: 6
 --- !u!33 &2580189132872860758
 MeshFilter:
   m_ObjectHideFlags: 0

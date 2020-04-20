@@ -28,6 +28,15 @@ public class FieldOfView : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Awake()
+    {
+        mesh = new Mesh();
+        mr = GetComponent<MeshRenderer>();
+        mr.material.SetColor("_TintColor", Color.yellow);
+        GetComponent<MeshFilter>().mesh = mesh;
+        rb = GetComponent<Rigidbody2D>();
+    }
+
 
 
     // Update is called once per frame
@@ -103,7 +112,7 @@ public class FieldOfView : MonoBehaviour
     {
         //Vector3 adjustedOrigin = transform.TransformPoint(origin);
         Vector3 adjPos = transform.InverseTransformPoint(go.transform.position);
-        if (Vector3.Distance(origin, adjPos) < viewDistance)
+        if (Vector3.Distance(origin, adjPos) < viewDistance + 2)
         {
             //Debug.Log("Within distance");
             Vector3 dir = (adjPos - origin).normalized;

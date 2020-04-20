@@ -30,7 +30,7 @@ Transform:
   m_Children:
   - {fileID: 800646265}
   m_Father: {fileID: 2129560913226825478}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114192944
 MonoBehaviour:
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   tool: {fileID: 800646266}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1 &800646262
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +187,7 @@ GameObject:
   - component: {fileID: 2129560913226825476}
   - component: {fileID: 2129560913226825479}
   - component: {fileID: 2129560913226825477}
+  - component: {fileID: 4881755143100142760}
   m_Layer: 0
   m_Name: FireFighterMan
   m_TagString: Untagged
@@ -201,10 +203,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129560913226825480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.67, y: -0.59, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.67, y: -0.59, z: -5}
+  m_LocalScale: {x: 0.287, y: 0.287, z: 0.287}
   m_Children:
-  - {fileID: 4486451672664038649}
   - {fileID: 114192943}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -248,7 +249,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7598965038668382504, guid: e201ddf00edd9ad46a1f79bd2db47b18,
+  m_Sprite: {fileID: 4877548512609762913, guid: 6d3d8b2bedd22504e97dc2a9fa8a8cf8,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -275,7 +276,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.56
+  m_Radius: 1.1688007
 --- !u!50 &2129560913226825479
 Rigidbody2D:
   serializedVersion: 4
@@ -310,117 +311,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  speed: 7
+  speed: 15
   health: 10
   direction: {x: 0, y: 0, z: 0}
   holder: {fileID: 0}
   flip: 0
   anim: {fileID: 0}
   hitstun: 0
-  fov: {fileID: 4486451672664038650}
+  fovGO: {fileID: 2580189132872860756, guid: f836cda9f6909de4f88af472d25f65a3, type: 3}
+  fov: {fileID: 0}
   player: {fileID: 0}
   target: {fileID: 0}
   sight: 100
-  attackingDistance: 1
+  attackingDistance: 2
   attackSpeed: 0.2
-  attackTimer: 0
+  attackTimer: 0.5
   followTimeElapsed: 0
   followTimeMax: 2.5
   detectPlayer: 0
---- !u!1001 &2129560913306261677
-PrefabInstance:
+--- !u!95 &4881755143100142760
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2129560913226825478}
-    m_Modifications:
-    - target: {fileID: 2580189132872860752, guid: f836cda9f6909de4f88af472d25f65a3,
-        type: 3}
-      propertyPath: m_Name
-      value: FieldOfView
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580189132872860756, guid: f836cda9f6909de4f88af472d25f65a3,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580189132872860756, guid: f836cda9f6909de4f88af472d25f65a3,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580189132872860756, guid: f836cda9f6909de4f88af472d25f65a3,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580189132872860756, guid: f836cda9f6909de4f88af472d25f65a3,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580189132872860756, guid: f836cda9f6909de4f88af472d25f65a3,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580189132872860756, guid: f836cda9f6909de4f88af472d25f65a3,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580189132872860756, guid: f836cda9f6909de4f88af472d25f65a3,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580189132872860756, guid: f836cda9f6909de4f88af472d25f65a3,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580189132872860756, guid: f836cda9f6909de4f88af472d25f65a3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580189132872860756, guid: f836cda9f6909de4f88af472d25f65a3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580189132872860756, guid: f836cda9f6909de4f88af472d25f65a3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580189132872860759, guid: f836cda9f6909de4f88af472d25f65a3,
-        type: 3}
-      propertyPath: layerMask.m_Bits
-      value: 3328
-      objectReference: {fileID: 0}
-    - target: {fileID: 2580189132872860759, guid: f836cda9f6909de4f88af472d25f65a3,
-        type: 3}
-      propertyPath: viewDistance
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f836cda9f6909de4f88af472d25f65a3, type: 3}
---- !u!4 &4486451672664038649 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2580189132872860756, guid: f836cda9f6909de4f88af472d25f65a3,
-    type: 3}
-  m_PrefabInstance: {fileID: 2129560913306261677}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4486451672664038650 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2580189132872860759, guid: f836cda9f6909de4f88af472d25f65a3,
-    type: 3}
-  m_PrefabInstance: {fileID: 2129560913306261677}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2129560913226825480}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c440a09d9a6d17e40ad5947baa832246, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cea91ff8ad3a5f34297dd1e137b04ecc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
