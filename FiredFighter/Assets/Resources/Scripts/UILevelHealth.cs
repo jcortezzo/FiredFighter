@@ -12,6 +12,8 @@ public class UILevelHealth : MonoBehaviour
     public Image healthImage;
     public Image fireHealthImage;
 
+    public GameObject losepanel;
+
     private float fireMaxHealth;
     private float fireHealthPercentage;
 
@@ -38,6 +40,10 @@ public class UILevelHealth : MonoBehaviour
         fireHealthPercentage = Fire.totalHealth / fireMaxHealth;
         fireHealthImage.fillAmount = fireHealthPercentage;
         DisplayText();
+        if(fireHealthPercentage <= 0)
+        {
+            losepanel.SetActive(true);
+        }
     }
 
     void DisplayText()
