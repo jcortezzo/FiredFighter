@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Match : Tool
+public class Match : Tool, IInteractable
 {
     private int charges = 1;
     private const float SHOOT_DISTANCE = 1f;
@@ -33,5 +33,10 @@ public class Match : Tool
         {
             return;
         }
+    }
+
+    public void Interact(Player player)
+    {
+        player.holder.PickupTool(this);
     }
 }

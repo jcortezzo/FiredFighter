@@ -303,8 +303,7 @@ public abstract class Enemy : LivingEntity
         //if (attackTimer > 0) return false;
         //attackTimer = attackSpeed;
         if (target == null) return false;
-        float distance = Mathf.Sqrt(Mathf.Pow(target.transform.position.y - this.transform.position.y, 2) +
-                                    Mathf.Pow(target.transform.position.x - this.transform.position.x, 2));
+        float distance = Vector3.Distance(target.transform.position, this.transform.position);
         return distance < attackingDistance && !IsFriendTargetingPlayer();
     }
 

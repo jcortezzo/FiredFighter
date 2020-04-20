@@ -141,7 +141,7 @@ public class Fire : MonoBehaviour, IInteractable
 
     private void CreateSmoke(IFlammable flammable)
     {
-        Debug.Log("smoke!");
+        //Debug.Log("smoke!");
         for (int i = 0; i < flammable.SmokeNumber(); i++)
         {
             Smoke smoke = Instantiate(smokepf, transform.position, Quaternion.identity).GetComponent<Smoke>();

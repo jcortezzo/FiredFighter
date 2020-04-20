@@ -42,6 +42,20 @@ public class Holder : MonoBehaviour
         go.GetComponent<Collider2D>().enabled = false;
     }
 
+    public void PickupTool(Tool gameObject)
+    {
+        if (item != null) DropTool();
+        tool = gameObject;
+        gameObject.transform.parent = this.transform;
+        gameObject.transform.localPosition = new Vector3(1f, 0, transform.position.z);
+        gameObject.GetComponent<Collider2D>().enabled = false;
+    }
+
+    public void DropTool()
+    {
+
+    }
+
     public void DropItem()
     {
         if(item != null)

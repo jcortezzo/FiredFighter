@@ -78,6 +78,7 @@ public abstract class LivingEntity : MonoBehaviour
             {
                 holder.tool.Action();
                 holder.tool.action = true;
+                Debug.Log("action");
             }
             else
             {

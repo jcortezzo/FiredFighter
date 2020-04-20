@@ -47,8 +47,6 @@ public class Player : LivingEntity
             interactable.Interact(this);
             //interactable = null;
         }
-
-
     }
 
     public override void FixedUpdate()

@@ -23,6 +23,7 @@ public class Bucket : Tool
             else if (waterSource != null && IsEmpty())
             {
                 water = Mathf.Min(water + 1, WATER_MAX);
+                Debug.Log("get water");
             }
             return;
         }

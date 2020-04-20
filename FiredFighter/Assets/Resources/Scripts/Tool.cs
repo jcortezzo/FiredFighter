@@ -15,7 +15,7 @@ public abstract class Tool : MonoBehaviour
     void Start()
     {
         holder = GetComponentInParent<Holder>();
-        holder.tool = this;
+        if(holder != null) holder.tool = this;
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public abstract class Tool : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        direction = holder.direction;
+        if(holder != null) direction = holder.direction;
     }
 
     public abstract void Action();
