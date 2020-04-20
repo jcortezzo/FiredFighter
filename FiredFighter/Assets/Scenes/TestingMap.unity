@@ -12206,12 +12206,12 @@ PrefabInstance:
     - target: {fileID: 5599623558531220770, guid: c19797eb161c99f44aea55d430e2036d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.18
+      value: 1.79
       objectReference: {fileID: 0}
     - target: {fileID: 5599623558531220770, guid: c19797eb161c99f44aea55d430e2036d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.72
+      value: 12.74
       objectReference: {fileID: 0}
     - target: {fileID: 5599623558531220770, guid: c19797eb161c99f44aea55d430e2036d,
         type: 3}
@@ -12258,10 +12258,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5599623558531220770, guid: c19797eb161c99f44aea55d430e2036d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.291
+      objectReference: {fileID: 0}
+    - target: {fileID: 5599623558531220770, guid: c19797eb161c99f44aea55d430e2036d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.291
+      objectReference: {fileID: 0}
+    - target: {fileID: 5599623558531220770, guid: c19797eb161c99f44aea55d430e2036d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.291
+      objectReference: {fileID: 0}
     - target: {fileID: 5599623558531220773, guid: c19797eb161c99f44aea55d430e2036d,
         type: 3}
       propertyPath: m_Name
       value: ChungaChad
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101172615037573048, guid: c19797eb161c99f44aea55d430e2036d,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101172615037573048, guid: c19797eb161c99f44aea55d430e2036d,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.1341282
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c19797eb161c99f44aea55d430e2036d, type: 3}

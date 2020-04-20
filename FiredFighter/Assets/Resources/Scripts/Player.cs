@@ -83,7 +83,7 @@ public class Player : LivingEntity
         {
             //dustParticle.Stop();
         }
-        //anim.SetFloat("speed", Mathf.Abs(horizontal) + Mathf.Abs(vertical));
+        anim.SetFloat("speed", Mathf.Abs(horizontal) + Mathf.Abs(vertical));
     }
 
     public override bool IsAttacking()
