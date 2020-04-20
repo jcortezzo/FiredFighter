@@ -12189,11 +12189,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChungaChad
       objectReference: {fileID: 0}
-    - target: {fileID: 5599623558531220773, guid: c19797eb161c99f44aea55d430e2036d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c19797eb161c99f44aea55d430e2036d, type: 3}
 --- !u!1 &462016834 stripped
@@ -15687,11 +15682,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 462016838}
-    - target: {fileID: 2129560913226825477, guid: 3d3aa77deb1c6ac4ca152f734d115559,
-        type: 3}
-      propertyPath: attackingDistance
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2129560913226825478, guid: 3d3aa77deb1c6ac4ca152f734d115559,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15751,11 +15741,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireFighterMan
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129560913226825480, guid: 3d3aa77deb1c6ac4ca152f734d115559,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d3aa77deb1c6ac4ca152f734d115559, type: 3}
