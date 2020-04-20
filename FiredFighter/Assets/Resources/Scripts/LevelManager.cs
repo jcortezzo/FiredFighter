@@ -49,7 +49,7 @@ public class LevelManager : MonoBehaviour
             for (int i = 0; i < 50; i++)
             {
                 float a = Random.Range(0f, 1f) * 2 * Mathf.PI;
-                float r = 50 * Mathf.Sqrt(Random.Range(0f, 1f));
+                float r = 20 * Mathf.Sqrt(Random.Range(0f, 1f));
                 float x = r * Mathf.Cos(a);
                 float y = r * Mathf.Sin(a);
                 WinFire winFire = Instantiate(winFirepf, new Vector3(x, y, transform.position.z), Quaternion.identity).GetComponent<WinFire>();
