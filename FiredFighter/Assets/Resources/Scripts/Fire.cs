@@ -21,6 +21,7 @@ public class Fire : MonoBehaviour, IInteractable
     private Animator animator;
 
     [SerializeField] private Transform smokepf;
+    [SerializeField] private LayerMask wallMask;
     //[SerializeField] private Smoke smoke;
 
 
@@ -45,6 +46,8 @@ public class Fire : MonoBehaviour, IInteractable
 
         animator = this.GetComponent<Animator>();
         InvokeRepeating("GrowFire", 10, 10);
+
+        LevelManager.Instance.fireStarted = true;
     }
 
     public void SetDamage(float f)
@@ -104,6 +107,7 @@ public class Fire : MonoBehaviour, IInteractable
         for (int i = 0; i < fires.Length; i++)
         {
             Vector3 position = transform.position + positions[i];
+            Collider2D collisions = Physics2D.OverlapCircle(position, 1f, wallMask);
             if (firePositions.ContainsKey(position))
             {
                 continue;

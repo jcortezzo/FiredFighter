@@ -45,6 +45,11 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (fireStarted && onFireObjects.Count == 0)
+        {
+            Fire.totalHealth = 0;
+            //Lose();
+        }
         if (houseHealth <= 0 && !aflame)
         {
             for (int i = 0; i < 50; i++)
