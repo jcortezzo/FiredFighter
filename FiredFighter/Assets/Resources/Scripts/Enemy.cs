@@ -57,6 +57,8 @@ public abstract class Enemy : LivingEntity
     private bool projectileWeapon;
     //private float detectTime = 1f;
     //private float detectTimer = 0f;
+    private float runSpeed;
+    private float originalSpeed;
 
     private float WeaponScale(float initalDamage, float x)
     {
@@ -106,6 +108,8 @@ public abstract class Enemy : LivingEntity
         fov.SetAimDirection(direction);*/
         fov.viewDistance = 6f;
         fov.fov = 45;
+        originalSpeed = speed;
+        runSpeed = speed * 1.5f;
         InvokeRepeating("UpdatePath", 0, 0.05f);
     }
 
@@ -148,6 +152,7 @@ public abstract class Enemy : LivingEntity
             detectPlayer = true;
             fov.SetColor(Color.red);
             fov.SetColorAlpha(.5f);
+            speed = runSpeed;
             //Debug.Log("detected!");
         } else if (followTimeElapsed > 0)
         {
@@ -159,6 +164,7 @@ public abstract class Enemy : LivingEntity
             }
             fov.SetColor(Color.yellow);
             fov.SetColorAlpha(.5f);
+            speed = originalSpeed;
         } else
         {
             fov.SetColor(Color.yellow);
