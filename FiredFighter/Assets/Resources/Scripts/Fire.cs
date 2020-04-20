@@ -18,6 +18,8 @@ public class Fire : MonoBehaviour, IInteractable
     public float splitTime = 10f;
     private float splitTimer;// = splitTime;
 
+    private Animator animator;
+
     [SerializeField] private Transform smokepf;
     //[SerializeField] private Smoke smoke;
 
@@ -36,7 +38,7 @@ public class Fire : MonoBehaviour, IInteractable
         splitTimer = splitTime;
         LevelManager.Instance.onFireObjects.Add(this.gameObject);
 
-        
+        animator = this.GetComponent<Animator>();
         InvokeRepeating("GrowFire", 10, 10);
     }
 
@@ -73,6 +75,7 @@ public class Fire : MonoBehaviour, IInteractable
             firePositions.Remove(transform.position);
             Destroy(this.gameObject);
         }
+        animator.SetInteger("level", level);
     }
 
     protected int Split()
