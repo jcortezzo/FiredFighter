@@ -19,7 +19,8 @@ public abstract class Enemy : LivingEntity
     //bool flip = false;
     //public LevelManager levelManager;
 
-    [SerializeField] public FieldOfView fov;
+    [SerializeField] private Transform fovGO;
+    public FieldOfView fov;
 
     Path path;
     Seeker seeker;
@@ -90,6 +91,16 @@ public abstract class Enemy : LivingEntity
         //CircleCollider2D collider = child.AddComponent<CircleCollider2D>();
         //collider.radius = sight;
         //collider.isTrigger = true;
+        
+        fov = Instantiate(fovGO, transform.position, Quaternion.identity).GetComponent<FieldOfView>();
+        /*float angle = GetAngleFromVectorFloat(direction);
+        float offset = 0.75f;
+        float x = transform.position.x + (offset * Mathf.Cos(Mathf.Deg2Rad * angle));
+        float y = transform.position.y + (offset * Mathf.Sin(Mathf.Deg2Rad * angle));
+        fov.SetOrigin(new Vector3(x, y, transform.position.z));
+        fov.SetAimDirection(direction);*/
+        fov.viewDistance = 6f;
+        fov.fov = 45;
         InvokeRepeating("UpdatePath", 0, 0.05f);
     }
 
@@ -153,7 +164,7 @@ public abstract class Enemy : LivingEntity
                 target = !BucketIsEmpty() ? GetClosestFire() : GetClosestWaterSource();
             }
         }
-
+        anim.SetFloat("speed", rb.velocity.magnitude);
         base.Update();
     }
 
