@@ -15,6 +15,9 @@ public class LevelManager : MonoBehaviour
     public float timeElapse;
     public float timeMax = 10f;
     public bool fireStarted = false;
+
+    public int smoke = 0;
+    public const int SMOKE_CAP = 100;
     // Start is called before the first frame update
     private void Awake()
     {

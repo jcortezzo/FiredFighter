@@ -75,13 +75,13 @@ public abstract class LivingEntity : MonoBehaviour
             //    weaponEndRotation = Quaternion.AngleAxis(angle + f * (weaponHolder.primary.swingRadius / 2), -this.transform.forward);
             //    weaponHolder.transform.rotation = Quaternion.AngleAxis(angle - f * (weaponHolder.primary.swingRadius / 2), -this.transform.forward);
             //}
-            if(holder.tool != null)
+            if(holder.tool != null && holder.item == null)
             {
                 holder.tool.Action();
                 holder.tool.action = true;
                 Debug.Log("action");
             }
-            else
+            else if (holder.item == null)
             {
                 Debug.Log("No holder");
                 if (currBreak != null)
