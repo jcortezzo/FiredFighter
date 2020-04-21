@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 660291394634460851}
   - component: {fileID: 660291394634460844}
   - component: {fileID: 660291394634460845}
-  - component: {fileID: 660291394634460846}
   - component: {fileID: 5435189322164824281}
+  - component: {fileID: 6891469591902480974}
   m_Layer: 11
-  m_Name: Table 1
+  m_Name: Table
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,32 +102,6 @@ MonoBehaviour:
     type: 3}
   smokeNumber: 2
   flameIncrease: 2
---- !u!61 &660291394634460846
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 660291394634460847}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.23894525, y: 0.014055252}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.64, y: 4.64}
-    newSize: {x: 1.9, y: 4.4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.4461164, y: 4.2875557}
-  m_EdgeRadius: 0
 --- !u!114 &5435189322164824281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,3 +120,24 @@ MonoBehaviour:
     type: 3}
   smokeNumber: 3
   flameIncrease: 3
+--- !u!68 &6891469591902480974
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660291394634460847}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 2.0334418, y: 0.42217186}
+  - {x: 1.0032935, y: -0.8958861}
+  - {x: -1.7794027, y: 0.22002505}
+  - {x: -0.5521348, y: 1.6464685}
+  - {x: 2.044684, y: 0.50660545}
