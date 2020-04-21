@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7061306575625636242}
   - component: {fileID: 7061306575625636237}
-  - component: {fileID: 7061306575625636239}
   - component: {fileID: 2574568638061580280}
+  - component: {fileID: 1230110874218334630}
   m_Layer: 11
-  m_Name: Sofa 1
+  m_Name: Sofa
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,32 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &7061306575625636239
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7061306575625636238}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.23894525, y: 0.014055252}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.64, y: 4.64}
-    newSize: {x: 1.9, y: 4.4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.4461164, y: 4.2875557}
-  m_EdgeRadius: 0
 --- !u!114 &2574568638061580280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,3 +101,34 @@ MonoBehaviour:
     type: 3}
   smokeNumber: 3
   flameIncrease: 3
+--- !u!68 &1230110874218334630
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061306575625636238}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.55775636, y: 1.4251779}
+  - {x: -0.34107816, y: 1.552802}
+  - {x: 0.19997959, y: 1.4236735}
+  - {x: 0.8806437, y: 0.58194274}
+  - {x: 1.4778231, y: 0.3859629}
+  - {x: 1.937834, y: -0.31107736}
+  - {x: 2.1272933, y: -1.4098647}
+  - {x: 1.0889075, y: -2.320885}
+  - {x: 0.62494284, y: -1.8084995}
+  - {x: -1.4220204, y: -0.2891504}
+  - {x: -1.524296, y: -0.4516051}
+  - {x: -2.049543, y: -0.18024406}
+  - {x: -1.9461309, y: 0.7952131}
+  - {x: -0.78249156, y: 1.1341194}
+  - {x: -0.6953954, y: 1.5212568}
