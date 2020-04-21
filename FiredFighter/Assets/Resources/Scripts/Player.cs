@@ -89,7 +89,6 @@ public class Player : LivingEntity
 
     public override void Attack()
     {
-        
         base.Attack();
     }
 
