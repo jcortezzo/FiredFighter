@@ -87,6 +87,13 @@ public class Player : LivingEntity
         anim.SetFloat("speed", Mathf.Abs(horizontal) + Mathf.Abs(vertical));
     }
 
+    public override void Attack()
+    {
+        
+        base.Attack();
+    }
+
+
     public override bool IsAttacking()
     {
         //return false;

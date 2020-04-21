@@ -28,7 +28,18 @@ public class GameSceneManager : MonoBehaviour
     {
         
     }
-
+    public void Play()
+    {
+        level = 0;
+        if (level >= levelScene.Length)
+        {
+            SceneManager.LoadScene("EndCredit");
+        }
+        else
+        {
+            SceneManager.LoadScene(levelScene[level]);
+        }
+    }
     public void LoadNextLevel()
     {
         level++;

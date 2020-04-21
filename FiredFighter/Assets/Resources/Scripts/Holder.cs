@@ -66,6 +66,7 @@ public class Holder : MonoBehaviour
             item.transform.position = new Vector3(item.transform.position.x, item.transform.position.y, -1);
             item.GetComponent<Collider2D>().enabled = true;
             AstarPath.active.Scan();
+            item = null;
         }
     }
 }

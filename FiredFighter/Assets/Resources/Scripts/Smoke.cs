@@ -11,6 +11,11 @@ public class Smoke : MonoBehaviour
     {
         lifespan = Random.Range(lifespan - 5, lifespan + 10);
         timer = lifespan;
+        LevelManager.Instance.smoke++;
+        if(LevelManager.Instance.smoke >= LevelManager.SMOKE_CAP)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame

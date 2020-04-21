@@ -48,10 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 3328
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 1792
+    m_Bits: 3840
   fov: 45
   viewDistance: 6
 --- !u!33 &2580189132872860758
