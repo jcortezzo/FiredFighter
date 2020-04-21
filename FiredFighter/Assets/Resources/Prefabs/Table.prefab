@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 660291394634460851}
   - component: {fileID: 660291394634460844}
-  - component: {fileID: 660291394634460845}
   - component: {fileID: 5435189322164824281}
   - component: {fileID: 6891469591902480974}
   m_Layer: 11
@@ -84,24 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &660291394634460845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 660291394634460847}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d189b89415be724e83f987b98916c03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  size: 2
-  woodPrefab: {fileID: 5390005589211352037, guid: 4ad6b1af2ddd35f4f933bf31321f3c66,
-    type: 3}
-  smokeNumber: 2
-  flameIncrease: 2
 --- !u!114 &5435189322164824281
 MonoBehaviour:
   m_ObjectHideFlags: 0
